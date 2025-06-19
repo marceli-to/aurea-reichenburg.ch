@@ -1,0 +1,32 @@
+@import "typo/webfonts.css";
+@import "vendor/mapbox.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+  @apply hidden;
+}
+
+main {
+  @apply flex-1;
+}
+
+main p:not(:last-of-type) {
+  @apply mb-20;
+}
+
+strong {
+  @apply font-bold;
+}
+
+
+.marker {
+  background-image: url('../icons/marker.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 50px;
+  width: 40px;
+}
