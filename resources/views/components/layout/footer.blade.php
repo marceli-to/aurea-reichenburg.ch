@@ -4,7 +4,7 @@
       <ul class="flex gap-x-20">
         <li>
           <a 
-            href="#" 
+            href="{{ route('page.imprint') }}" 
             title="Impressum"
             class="hover:underline underline-offset-4 decoration-1">
             Impressum
@@ -12,7 +12,7 @@
         </li>
         <li>
           <a 
-            href="#" 
+            href="{{ route('page.privacy') }}" 
             title="Datenschutz"
             class="hover:underline underline-offset-4 decoration-1">
             Datenschutz

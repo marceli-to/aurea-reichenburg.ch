@@ -21,7 +21,7 @@ strong {
   @apply font-bold;
 }
 
-
+/* map marker */
 .marker {
   background-image: url('../icons/marker.svg');
   background-size: contain;
@@ -30,3 +30,42 @@ strong {
   height: 50px;
   width: 40px;
 }
+
+/* imprint, privacy */
+.privacy h1,
+.privacy h2,
+.imprint h1,
+.imprint h2 {
+  @apply text-oxblood font-bold;
+}
+
+.privacy h1,
+.imprint h1 {
+  @apply text-xl md:text-2xl mb-10 md:mb-20;
+}
+
+.privacy h2,
+.imprint h2 {
+  @apply text-lg md:text-xl mb-5 md:mb-10;
+}
+
+.imprint p,
+.privacy p {
+  @apply max-w-4xl;
+}
+
+.imprint ul,
+.privacy ul {
+  @apply list-disc list-inside;
+}
+
+.imprint ul:not(:last-child),
+.privacy ul:not(:last-child) {
+  @apply mb-20;
+}
+
+.imprint a,
+.privacy a {
+  @apply underline underline-offset-4 decoration-1 hover:no-underline;
+}
+

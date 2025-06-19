@@ -20,5 +20,5 @@
 @livewireStyles
 </head>
 <body 
-  class="antialiased font-adelle-sans text-black text-base md:text-md lg:text-lg tracking-normal leading-[1.45] flex min-h-full flex-col" 
+  class="antialiased font-adelle-sans text-black text-base md:text-md lg:text-lg tracking-normal leading-[1.45] flex flex-col min-h-dvh md:min-h-screen" 
   x-data="{ menu: false }">
