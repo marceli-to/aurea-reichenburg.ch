@@ -3,8 +3,8 @@ const initMap = () => {
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/marcelitoooo/ck16ms7m51nlo1cmwnqrbjuyq?optimize=true',
-    center: [8.515378841985529,47.39625055471236],
-    zoom: 13
+    center: [8.986927,47.167713],
+    zoom: 11
   });
   map.addControl(new mapboxgl.NavigationControl());
   map.scrollZoom.disable();
@@ -15,7 +15,7 @@ const initMap = () => {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [8.515378841985529,47.39625055471236]
+        coordinates: [8.986927,47.167713]
       },
       properties: {
         title: 'Wohnen in Zürich-Wipkingen',

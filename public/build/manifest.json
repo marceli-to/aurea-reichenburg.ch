@@ -1,15 +1,15 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-dc6746f5.css",
+    "file": "assets/app-7579bb89.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/icons/marker.svg": {
-    "file": "assets/marker-0bf82cd6.svg",
+    "file": "assets/marker-1a3c54a2.svg",
     "src": "resources/icons/marker.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-368757a1.js",
+    "file": "assets/app-2a7d7eb0.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

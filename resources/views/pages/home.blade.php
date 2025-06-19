@@ -23,7 +23,7 @@
   </x-layout.inner>
 </x-layout.section>
 
-<x-layout.section class="bg-oxblood" id="konzept">
+<x-layout.section class="bg-oxblood scroll-mt-60 md:scroll-mt-100" id="konzept">
   <x-layout.inner class="relative text-white py-30 md:py-50">
 
     <div class="md:columns-2 md:gap-x-30 lg:gap-x-50 pl-20">
@@ -44,20 +44,20 @@
 
 <div class="relative pt-20 z-20 after:bg-oxblood after:content-[''] after:block after:w-full after:h-[40%] after:top-0 after:left-0 after:absolute after:z-10">
   <x-media.visual 
-    image="aurea-visual-1" 
+    image="aurea-visual-2" 
     alt="Aurea Reichenburg"
     class="max-w-7xl mx-auto relative z-20" />
 </div>
 
 <x-layout.section>
-  <x-layout.inner class="relative" id="lage">
+  <x-layout.inner class="relative -scroll-mt-80 md:scroll-mt-120" id="lage">
     <article class="md:max-w-[50%] pl-20 py-20 md:pt-40 md:pb-20">
       <p><strong>Das Neubauprojekt befindet sich im Quartier Auhof 7/9/18, 8864 Reichenburg. Geniessen Sie spektakuläre Sonnenaufgänge und ein beeindruckendes Bergpanorama mit Sicht auf den Säntis und die Glarner Alpen.</strong></p>
       <a 
         href="https://maps.app.goo.gl/QZdPFWB7m9XH3YA19"
         title="Google Maps öffnen"
         class="group">
-        <x-icons.badge-maps class="w-169 md:w-[200px] h-auto group-hover:opacity-80 group-hover:-rotate-2 transition-all" />
+        <x-icons.badge-maps class="mt-20 w-169 md:w-[200px] h-auto group-hover:opacity-80 group-hover:-rotate-2 transition-all" />
       </a>
     </article>
   </x-layout.inner>
@@ -74,7 +74,7 @@
       controls
       loop
       muted
-      class="mt-90 w-full h-auto max-w-7xl mx-auto md:px-40 relative z-20">
+      class="mt-90 w-full h-auto max-w-7xl mx-auto relative z-20">
     </video>
   </div>
 </x-layout.section>
@@ -108,5 +108,7 @@
     </div>
   </x-layout.inner>
 </x-layout.section>
+
+<x-misc.map />
 
 @endsection
