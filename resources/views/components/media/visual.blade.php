@@ -4,7 +4,7 @@
   'class' => '' 
 ])
 
-<figure class="relative {{ $class}}">
+<figure class="relative {{ $class }}">
   <picture>
 
     <source 

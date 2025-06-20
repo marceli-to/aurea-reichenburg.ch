@@ -24,6 +24,17 @@ export default {
   theme: {
     extend: {
 
+      keyframes: {
+        'slide-up-fade': {
+          '0%': { opacity: '0', transform: 'translateY(150px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+
+      animation: {
+        'slide-up-fade': 'slide-up-fade 0.8s ease-out forwards',
+      },
+
       screens: {
         'xs': '500px',
       },
