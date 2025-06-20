@@ -79,8 +79,8 @@
   </div>
 </x-layout.section>
 
-<x-layout.section class="bg-olive py-20 md:py-40 text-white scroll-mt-100 md:scroll-mt-180">
-  <x-layout.inner id="kontakt">
+<x-layout.section class="bg-olive py-20 md:py-40 text-white">
+  <x-layout.inner id="kontakt" class="scroll-mt-100 md:scroll-mt-180">
     <p class="max-w-5xl">
       <strong>Der Vermarktungsstart ist geplant für Herbst 2026.<br>Haben Sie Fragen? Gerne stehen wir Ihnen für ergänzende Auskünfte zur Verfügung.</strong>
     </p>
