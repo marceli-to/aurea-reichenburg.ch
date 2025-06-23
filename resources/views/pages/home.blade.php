@@ -26,7 +26,7 @@
 <x-layout.section class="bg-oxblood scroll-mt-60 md:scroll-mt-100" id="konzept">
   <x-layout.inner class="relative text-white py-30 md:py-50">
 
-    <div class="md:columns-2 md:gap-x-30 lg:gap-x-50 pl-20">
+    <div class="md:columns-2 md:gap-x-30 lg:gap-x-50 pl-20 relative z-20">
       <x-misc.claim 
         text="wohnen.<br>wohlfühlen.<br>verweilen."
         class="md:mb-40 -translate-x-[20px] 2xl:-translate-x-[80px]"
