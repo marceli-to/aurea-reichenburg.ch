@@ -1,5 +1,5 @@
 @extends('app')
-@section('seo_description', '')
+@section('seo_description', 'Inmitten idyllischer Berglandschaft und ländlichem Charme entsteht bis Herbst 2027 ein modernes Wohnensemble mit 60 Mietwohnungen in drei Mehrfamilienhäusern. Vielfältige 2.5- bis 5.5-Zimmerwohnungen bieten individuellen Wohnkomfort für Singles, Paare und Familien. Jetzt mehr über das neue Zuhause mit Ausblick erfahren!')
 @section('content')
 
 <div class="relative z-20 after:bg-olive after:content-[''] after:block after:w-full after:h-[40%] after:bottom-0 after:left-0 after:absolute after:z-10">
