@@ -17,7 +17,7 @@
     />
     <article class="text-white md:max-w-[50%] md:py-40 relative top-80 md:top-0 pl-20 pb-100">
       <p><strong>Eingebettet zwischen ländlicher Tradition und imposanter Bergkulisse entsteht ein einzigartiges Wohnensemble aus drei Mehrfamilienhäusern mit 60 Mietwohnungen.</strong></p>
-      <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5 bis 5.5 Zimmerwonungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug voraussichtlich im Herbst 2027.</strong></p>
+      <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5- bis 5.5-Zimmerwohnungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug voraussichtlich im Herbst 2027.</strong></p>
     </article>
     <x-icons.badge-start class="w-200 md:w-[250px] h-auto ml-20 md:absolute md:right-20 md:top-0 md:translate-y-full md:mt-20" />
   </x-layout.inner>
@@ -26,10 +26,10 @@
 <x-layout.section class="bg-oxblood scroll-mt-60 md:scroll-mt-100" id="konzept">
   <x-layout.inner class="relative text-white py-30 md:py-50">
 
-    <div class="md:columns-2 md:gap-x-30 lg:gap-x-50 pl-20 relative z-20 overflow-visible">
+    <div class="md:columns-2 md:gap-x-30 lg:gap-x-50 pl-20">
       <x-misc.claim 
         text="wohnen.<br>wohlfühlen.<br>verweilen."
-        class="md:mb-40 -translate-x-[20px] 2xl:-translate-x-[80px]"
+        class="md:mb-40"
       />
       <p class="mt-20 md:mt-0"><strong>Grosszügige Grundrisse, durchdachte Wohnkonzepte und hochwertige Materialien schaffen ein behagliches Zuhause mit Blick ins Grüne.</strong></p>
       <p>Das Neubauprojekt «auréa» folgt den Kriterien der Nachhaltigkeit: alle Wohnungen sind nach <strong>Minergie-Standard</strong> gebaut und überzeugen mit einem hochwertigen Innenausbau: edle <strong>Parkettböden</strong> in den Wohn- und Schlafbereichen schaffen eine warme, wohnliche Atmosphäre und unterstreichen den Anspruch an Komfort und Qualität. Dank energieeffizienter Bauweise profitieren die zukünftigen Bewohner von einem gesunden Raumklima und tiefem Energieverbrauch: dies auch dank der hauseigenen Photovoltaikanlage, die den Grossteil des Stromverbrauchs umweltfreundlich und lokal erzeugt.</p>
