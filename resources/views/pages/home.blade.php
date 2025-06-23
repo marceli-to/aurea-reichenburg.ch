@@ -29,7 +29,7 @@
     <div class="md:columns-2 md:gap-x-30 lg:gap-x-50 pl-20">
       <x-misc.claim 
         text="wohnen.<br>wohlfühlen.<br>verweilen."
-        class="md:mb-40 -translate-x-[20px] 2xl:-translate-x-[80px] z-50"
+        class="md:mb-40 -translate-x-[20px] 2xl:-translate-x-[80px] relative z-50"
       />
       <p class="mt-20 md:mt-0"><strong>Grosszügige Grundrisse, durchdachte Wohnkonzepte und hochwertige Materialien schaffen ein behagliches Zuhause mit Blick ins Grüne.</strong></p>
       <p>Das Neubauprojekt «auréa» folgt den Kriterien der Nachhaltigkeit: alle Wohnungen sind nach <strong>Minergie-Standard</strong> gebaut und überzeugen mit einem hochwertigen Innenausbau: edle <strong>Parkettböden</strong> in den Wohn- und Schlafbereichen schaffen eine warme, wohnliche Atmosphäre und unterstreichen den Anspruch an Komfort und Qualität. Dank energieeffizienter Bauweise profitieren die zukünftigen Bewohner von einem gesunden Raumklima und tiefem Energieverbrauch: dies auch dank der hauseigenen Photovoltaikanlage, die den Grossteil des Stromverbrauchs umweltfreundlich und lokal erzeugt.</p>
