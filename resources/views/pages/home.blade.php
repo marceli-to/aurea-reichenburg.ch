@@ -5,7 +5,7 @@
 <div class="relative z-20 after:bg-olive after:content-[''] after:block after:w-full after:h-[40%] after:bottom-0 after:left-0 after:absolute after:z-10">
   <x-media.visual 
     image="aurea-visual-1" 
-    alt="Aurea Reichenburg"
+    alt="auréa Reichenburg SZ"
     class="max-w-7xl mx-auto relative z-20" />
 </div>
 
@@ -45,7 +45,7 @@
 <div class="relative pt-20 z-20 after:bg-oxblood after:content-[''] after:block after:w-full after:h-[40%] after:top-0 after:left-0 after:absolute after:z-10">
   <x-media.visual 
     image="aurea-visual-2" 
-    alt="Aurea Reichenburg"
+    alt="auréa Reichenburg SZ"
     class="max-w-7xl mx-auto relative z-20" />
 </div>
 
@@ -65,17 +65,20 @@
     <div class="max-w-7xl mx-auto px-20 md:px-40 relative">
       <x-misc.claim 
         text="berge.<br>panorama.<br>weitsicht."
-        class="!text-olive md:!-translate-x-[20px] opacity-80 absolute -top-92 md:-top-130 lg:-top-182 md:right-0 z-30"
+        class="!text-olive md:!-translate-x-[20px] opacity-80 absolute -top-92 md:-top-130 lg:-top-184 md:right-0 z-30"
       />
     </div>
-    <video 
-      src="{{ asset('media/aurea-drohne-rorwis-reichenburg.mp4') }}" 
-      autoplay 
-      controls
-      loop
-      muted
-      class="mt-90 w-full h-auto max-w-7xl mx-auto relative z-20">
-    </video>
+
+    <iframe 
+      class="mt-90 w-full h-auto max-w-7xl mx-auto relative z-20 aspect-video" 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/An-h_SUF8io?si=sDPPf0Ch5jLfwhUe" 
+      title="auréa Reichenburg SZ" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
   </div>
 </x-layout.section>
 

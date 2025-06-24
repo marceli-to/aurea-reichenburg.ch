@@ -11,7 +11,7 @@ return [
   |
   */
 
-  'title' => env('APP_NAME', 'Aurea Reichenburg SZ'),
+  'title' => env('APP_NAME', 'auréa Reichenburg SZ SZ'),
 
   /*
   |--------------------------------------------------------------------------
