@@ -17,7 +17,7 @@
     />
     <article class="text-white md:max-w-[50%] md:py-40 relative top-80 md:top-0 pl-20 pb-100">
       <p><strong>Eingebettet zwischen ländlicher Tradition und imposanter Bergkulisse entsteht ein einzigartiges Wohnensemble aus drei Mehrfamilienhäusern mit 60 Mietwohnungen.</strong></p>
-      <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5- bis 5.5-Zimmerwohnungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug voraussichtlich im Herbst 2027.</strong></p>
+      <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5- bis 5.5-Zimmerwohnungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug voraussichtlich im Herbst/Winter 2027.</strong></p>
     </article>
     <x-icons.badge-start class="w-200 md:w-[250px] h-auto ml-20 md:absolute md:right-20 md:top-0 md:translate-y-full md:mt-20" />
   </x-layout.inner>
@@ -32,7 +32,7 @@
         class="md:mb-40 -ml-20 xl:-ml-80"
       />
       <p class="mt-20 md:mt-0"><strong>Grosszügige Grundrisse, durchdachte Wohnkonzepte und hochwertige Materialien schaffen ein behagliches Zuhause mit Blick ins Grüne.</strong></p>
-      <p>Das Neubauprojekt «auréa» folgt den Kriterien der Nachhaltigkeit: alle Wohnungen sind nach <strong>Minergie-Standard</strong> gebaut und überzeugen mit einem hochwertigen Innenausbau: edle <strong>Parkettböden</strong> in den Wohn- und Schlafbereichen schaffen eine warme, wohnliche Atmosphäre und unterstreichen den Anspruch an Komfort und Qualität. Dank energieeffizienter Bauweise profitieren die zukünftigen Bewohner von einem gesunden Raumklima und tiefem Energieverbrauch: dies auch dank der hauseigenen Photovoltaikanlage, die den Grossteil des Stromverbrauchs umweltfreundlich und lokal erzeugt.</p>
+      <p>Das Neubauprojekt «auréa» folgt den Kriterien der Nachhaltigkeit: alle Wohnungen sind nach <strong>Minergie-Standard</strong> gebaut und überzeugen mit einem hochwertigen Innenausbau: <strong>hochwertige Materialien</strong> in den Wohn- und Schlafbereichen schaffen eine warme, wohnliche Atmosphäre und unterstreichen den Anspruch an Komfort und Qualität. Dank energieeffizienter Bauweise profitieren die zukünftigen Bewohner von einem gesunden Raumklima und tiefem Energieverbrauch: dies auch dank der hauseigenen Photovoltaikanlage, die den Grossteil des Stromverbrauchs umweltfreundlich und lokal erzeugt.</p>
       <p>Die autofreie Umgebung, naturnahe Gestaltungselemente und die sorgfältig geplanten Begegnungszonen fördern eine hohe Wohn- und Lebensqualität – für ein gemeinschaftliches, nachhaltiges Zusammenleben im Einklang mit der Natur. Ein <strong>zentraler Badeteich</strong> mit einheimischen Uferpflanzen, naturnahe Umgebungsgestaltung und individuell nutzbare Schrebergärten schaffen einen Ort der Ruhe und Erholung.</p>
       <p>Im Zuge der Quartiersüberbauung entsteht in unmittelbarer Nähe der neue Standort eines <strong>Doppelkindergartens</strong> sowie weiteren <strong>Einkaufsmöglichkeiten.</strong></p>
     </div>
@@ -52,7 +52,7 @@
 <x-layout.section>
   <x-layout.inner class="relative -scroll-mt-80 md:scroll-mt-120" id="lage">
     <article class="md:max-w-[50%] pl-20 py-20 md:pt-40 md:pb-20">
-      <p><strong>Das Neubauprojekt befindet sich im Quartier Auhof 7/9/18, 8864 Reichenburg. Geniessen Sie spektakuläre Sonnenaufgänge und ein beeindruckendes Bergpanorama mit Sicht auf den Säntis und die Glarner Alpen.</strong></p>
+      <p><strong>Das Neubauprojekt liegt am Rand des Quartiers „Obere Allmeind“ und grenzt direkt an die Landwirtschaftszone. Geniessen Sie spektakuläre Sonnenaufgänge und ein beeindruckendes Bergpanorama mit Sicht auf den Säntis und die Glarner Alpen.</strong></p>
       <a 
         href="https://maps.app.goo.gl/QZdPFWB7m9XH3YA19"
         title="Google Maps öffnen"
