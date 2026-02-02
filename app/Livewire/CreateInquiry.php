@@ -46,23 +46,24 @@ class CreateInquiry extends Component
 
     public function save()
     {
-        // Time-based check: form must be open for at least 3 seconds
-        $loadedAt = Session::get('form_loaded_at', 0);
-        if (now()->timestamp - $loadedAt < 3) {
-            $this->spamError = true;
-            return;
-        }
+        // TODO: Re-enable spam protection after testing
+        // // Time-based check: form must be open for at least 3 seconds
+        // $loadedAt = Session::get('form_loaded_at', 0);
+        // if (now()->timestamp - $loadedAt < 3) {
+        //     $this->spamError = true;
+        //     return;
+        // }
 
-        // Rate limiting: max 5 submissions per IP per hour
-        $ip = request()->ip();
-        $key = 'inquiry-submit:' . $ip;
-        
-        if (RateLimiter::tooManyAttempts($key, 5)) {
-            $this->spamError = true;
-            return;
-        }
-        
-        RateLimiter::hit($key, 3600); // 1 hour decay
+        // // Rate limiting: max 5 submissions per IP per hour
+        // $ip = request()->ip();
+        // $key = 'inquiry-submit:' . $ip;
+        // 
+        // if (RateLimiter::tooManyAttempts($key, 5)) {
+        //     $this->spamError = true;
+        //     return;
+        // }
+        // 
+        // RateLimiter::hit($key, 3600); // 1 hour decay
 
         try {
             $this->validate();
