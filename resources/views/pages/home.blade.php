@@ -86,7 +86,7 @@
 
 <x-layout.section class="bg-sand/20 py-40 md:py-60" id="anfrage">
   <x-layout.inner class="scroll-mt-100 md:scroll-mt-160">
-    <div>
+    <div class="max-w-4xl">
       <h2 class="text-2xl md:text-3xl font-bold text-olive uppercase tracking-wider mb-30">Kontaktformular</h2>
       <livewire:create-inquiry />
     </div>
