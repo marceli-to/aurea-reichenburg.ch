@@ -20,7 +20,7 @@
                                 value="{{ $type }}"
                                 class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-2 focus:ring-olive"
                             >
-                            <span class="text-sm text-olive group-hover:text-oxblood transition-colors">{{ $type }}</span>
+                            <span class="text-md text-olive group-hover:text-oxblood transition-colors">{{ $type }}</span>
                         </label>
                     @endforeach
                 </div>
