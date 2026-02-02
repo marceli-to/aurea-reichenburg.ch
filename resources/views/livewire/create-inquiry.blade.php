@@ -1,6 +1,6 @@
 <div>
     @if($submitted)
-        <div class="bg-sand/20 border border-sand rounded-lg p-30 text-center">
+        <div>
             <p class="text-xl font-bold text-olive mb-10">Vielen Dank für Ihre Anfrage!</p>
             <p class="text-olive">Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
         </div>
