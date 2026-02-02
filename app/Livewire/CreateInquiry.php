@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Inquiry;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class CreateInquiry extends Component
 {
@@ -63,7 +64,12 @@ class CreateInquiry extends Component
         
         RateLimiter::hit($key, 3600); // 1 hour decay
 
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (ValidationException $e) {
+            $this->dispatch('validation-failed');
+            throw $e;
+        }
 
         Inquiry::create([
             'firstname' => $this->firstname,

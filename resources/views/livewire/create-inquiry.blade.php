@@ -1,4 +1,8 @@
-<div x-data x-on:form-submitted.window="document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth' })">
+<div 
+    x-data
+    x-on:form-submitted.window="document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth' })"
+    x-on:validation-failed.window="$nextTick(() => { const err = document.querySelector('.text-oxblood'); if(err) err.scrollIntoView({ behavior: 'smooth', block: 'center' }); })"
+>
     @if($submitted)
         <div>
             <p class="text-xl font-bold text-olive mb-10">Vielen Dank für Ihre Anfrage!</p>
