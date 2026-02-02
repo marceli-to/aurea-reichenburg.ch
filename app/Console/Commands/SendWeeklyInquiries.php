@@ -10,21 +10,21 @@ use Carbon\Carbon;
 
 class SendWeeklyInquiries extends Command
 {
-    protected $signature = 'inquiries:send-weekly {--all : Send all inquiries regardless of date}';
-    protected $description = 'Send weekly inquiry report as Excel/CSV to info@sanjo.ch';
+    protected $signature = 'inquiries:send-weekly {--weekly : Only send last week\'s inquiries}';
+    protected $description = 'Send inquiry report as Excel/CSV to info@sanjo.ch';
 
     public function handle()
     {
-        $all = $this->option('all');
+        $weeklyOnly = $this->option('weekly');
 
-        if ($all) {
-            $inquiries = Inquiry::all();
-            $startOfWeek = Inquiry::min('created_at') ? Carbon::parse(Inquiry::min('created_at')) : Carbon::now();
-            $endOfWeek = Carbon::now();
-        } else {
+        if ($weeklyOnly) {
             $startOfWeek = Carbon::now()->subWeek()->startOfWeek();
             $endOfWeek = Carbon::now()->subWeek()->endOfWeek();
             $inquiries = Inquiry::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        } else {
+            $inquiries = Inquiry::all();
+            $startOfWeek = Inquiry::min('created_at') ? Carbon::parse(Inquiry::min('created_at')) : Carbon::now();
+            $endOfWeek = Carbon::now();
         }
 
         if ($inquiries->isEmpty()) {
