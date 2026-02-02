@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class SendWeeklyInquiries extends Command
 {
     protected $signature = 'inquiries:send-weekly {--weekly : Only send last week\'s inquiries}';
-    protected $description = 'Send inquiry report as Excel/CSV to info@sanjo.ch';
+    protected $description = 'Send inquiry report as Excel/CSV)';
 
     public function handle()
     {
@@ -60,7 +60,7 @@ class SendWeeklyInquiries extends Command
             "Anzahl: {$inquiries->count()}\n\n" .
             "Freundliche Grüsse\nauréa Reichenburg",
             function ($message) use ($tempPath, $filename, $startOfWeek, $endOfWeek) {
-                $message->to('info@sanjo.ch')
+                $message->to(env('MAIL_TO'))
                     ->subject('auréa Reichenburg – Anfragen')
                     ->attach($tempPath, [
                         'as' => $filename,
@@ -71,6 +71,6 @@ class SendWeeklyInquiries extends Command
 
         unlink($tempPath);
 
-        $this->info("Sent {$inquiries->count()} inquiries to info@sanjo.ch");
+        $this->info("Sent {$inquiries->count()} inquiries to ". env('MAIL_TO'));
     }
 }
