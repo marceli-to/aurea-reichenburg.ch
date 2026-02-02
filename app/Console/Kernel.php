@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
     {
         // Send weekly inquiry report every Monday at 8:00
         // $schedule->command('inquiries:send-weekly --weekly')->weeklyOn(1, '08:00');
-        $schedule->command('inquiries:send-weekly --weekly')->everyFiveMinutes(); // TESTING
+        $schedule->command('inquiries:send-weekly')->everyFiveMinutes(); // TESTING
     }
 
     /**
