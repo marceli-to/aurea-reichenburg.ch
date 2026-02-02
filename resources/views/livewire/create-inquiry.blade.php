@@ -18,7 +18,7 @@
                                 type="checkbox" 
                                 wire:model="apartment_types"
                                 value="{{ $type }}"
-                                class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-0"
+                                class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-1 focus:ring-olive"
                             >
                             <span class="text-olive group-hover:text-oxblood transition-colors">{{ $type }}</span>
                         </label>
@@ -121,7 +121,7 @@
                     type="checkbox" 
                     id="privacy" 
                     wire:model="privacy"
-                    class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-0"
+                    class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-1 focus:ring-olive"
                 >
                 <label for="privacy" class="text-sm text-olive">
                     Ich habe die <a href="/datenschutz" target="_blank" class="underline hover:text-oxblood">Datenschutzerklärung</a> gelesen und akzeptiere diese.
