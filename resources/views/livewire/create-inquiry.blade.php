@@ -133,7 +133,7 @@
             <div class="pt-10">
                 <button 
                     type="submit"
-                    class="bg-olive text-white font-bold uppercase tracking-widest px-20 py-12 rounded-none hover:bg-olive/90 transition-all"
+                    class="bg-olive text-white font-bold uppercase tracking-widest px-16 py-8 rounded-none hover:bg-olive/90 transition-all"
                     wire:loading.attr="disabled"
                     wire:loading.class="opacity-50 cursor-wait"
                 >
