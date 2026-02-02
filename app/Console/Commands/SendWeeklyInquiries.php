@@ -56,8 +56,8 @@ class SendWeeklyInquiries extends Command
         file_put_contents($tempPath, $csv);
 
         Mail::raw(
-            "Anbei die Anfragen der Woche vom {$startOfWeek->format('d.m.Y')} bis {$endOfWeek->format('d.m.Y')}.\n\n" .
-            "Anzahl Anfragen: {$inquiries->count()}\n\n" .
+            "Anbei die Anfragen.\n\n" .
+            "Anzahl: {$inquiries->count()}\n\n" .
             "Freundliche Grüsse\nauréa Reichenburg",
             function ($message) use ($tempPath, $filename, $startOfWeek, $endOfWeek) {
                 $message->to('info@sanjo.ch')
