@@ -1,7 +1,7 @@
 <div 
     x-data
     x-on:form-submitted.window="document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth' })"
-    x-on:validation-failed.window="$nextTick(() => { document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth' }); })"
+    x-on:validation-failed.window="document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth' })"
 >
     @if($submitted)
         <div>
