@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use App\Models\Inquiry;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Session;
 
 class CreateInquiry extends Component
 {
@@ -34,9 +36,33 @@ class CreateInquiry extends Component
     public $privacy = false;
 
     public $submitted = false;
+    public $spamError = false;
+
+    public function mount()
+    {
+        Session::put('form_loaded_at', now()->timestamp);
+    }
 
     public function save()
     {
+        // Time-based check: form must be open for at least 3 seconds
+        $loadedAt = Session::get('form_loaded_at', 0);
+        if (now()->timestamp - $loadedAt < 3) {
+            $this->spamError = true;
+            return;
+        }
+
+        // Rate limiting: max 5 submissions per IP per hour
+        $ip = request()->ip();
+        $key = 'inquiry-submit:' . $ip;
+        
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            $this->spamError = true;
+            return;
+        }
+        
+        RateLimiter::hit($key, 3600); // 1 hour decay
+
         $this->validate();
 
         Inquiry::create([

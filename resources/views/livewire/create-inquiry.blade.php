@@ -4,6 +4,11 @@
             <p class="text-xl font-bold text-olive mb-10">Vielen Dank für Ihre Anfrage!</p>
             <p class="text-olive">Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
         </div>
+    @elseif($spamError)
+        <div>
+            <p class="text-xl font-bold text-oxblood mb-10">Ein Fehler ist aufgetreten.</p>
+            <p class="text-olive">Bitte versuchen Sie es später erneut.</p>
+        </div>
     @else
         <form wire:submit="save" class="space-y-20">
             <x-honeypot />
