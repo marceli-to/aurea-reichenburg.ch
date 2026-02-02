@@ -61,7 +61,7 @@ class SendWeeklyInquiries extends Command
             "Freundliche Grüsse\nauréa Reichenburg",
             function ($message) use ($tempPath, $filename, $startOfWeek, $endOfWeek) {
                 $message->to('info@sanjo.ch')
-                    ->subject('auréa Reichenburg – Wöchentliche Anfragen (' . $startOfWeek->format('d.m.') . ' - ' . $endOfWeek->format('d.m.Y') . ')')
+                    ->subject('auréa Reichenburg – Anfragen')
                     ->attach($tempPath, [
                         'as' => $filename,
                         'mime' => 'text/csv',
