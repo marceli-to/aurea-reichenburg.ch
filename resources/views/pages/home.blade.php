@@ -19,7 +19,9 @@
       <p><strong>Eingebettet zwischen ländlicher Tradition und imposanter Bergkulisse entsteht ein einzigartiges Wohnensemble aus drei Mehrfamilienhäusern mit 60 Mietwohnungen.</strong></p>
       <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5- bis 5.5-Zimmerwohnungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug voraussichtlich im Herbst/Winter 2027.</strong></p>
     </article>
-    <x-icons.badge-start class="w-200 md:w-[250px] h-auto ml-20 md:absolute md:right-20 md:top-0 md:translate-y-full md:mt-20" />
+    <a href="#anfrage" title="Zur Anfrage" class="group">
+      <x-icons.badge-start class="w-200 md:w-[250px] h-auto ml-20 md:absolute md:right-20 md:top-0 md:translate-y-full md:mt-20 group-hover:opacity-80 group-hover:-rotate-2 transition-all" />
+    </a>
   </x-layout.inner>
 </x-layout.section>
 
@@ -80,6 +82,19 @@
       referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
     </iframe>
   </div>
+</x-layout.section>
+
+<x-layout.section class="bg-sand/20 py-40 md:py-60" id="anfrage">
+  <x-layout.inner class="scroll-mt-100 md:scroll-mt-160">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-olive mb-10">Interesse anmelden</h2>
+      <p class="text-olive mb-30">
+        <strong>Sie interessieren sich für eine Wohnung im auréa?</strong><br>
+        Hinterlassen Sie uns Ihre Kontaktdaten und wir melden uns bei Ihnen, sobald weitere Informationen verfügbar sind.
+      </p>
+      <livewire:create-inquiry />
+    </div>
+  </x-layout.inner>
 </x-layout.section>
 
 <x-layout.section class="bg-olive py-20 md:py-40 text-white">
