@@ -18,7 +18,7 @@
                                 type="checkbox" 
                                 wire:model="apartment_types"
                                 value="{{ $type }}"
-                                class="w-18 h-18 border-olive/30 rounded text-olive "
+                                class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-0"
                             >
                             <span class="text-olive group-hover:text-oxblood transition-colors">{{ $type }}</span>
                         </label>
@@ -35,7 +35,7 @@
                         type="text" 
                         id="firstname" 
                         wire:model="firstname"
-                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50"
+                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50"
                     >
                     @error('firstname') <span class="text-oxblood text-sm mt-4 block">{{ $message }}</span> @enderror
                 </div>
@@ -47,7 +47,7 @@
                         type="text" 
                         id="name" 
                         wire:model="name"
-                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50"
+                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50"
                     >
                     @error('name') <span class="text-oxblood text-sm mt-4 block">{{ $message }}</span> @enderror
                 </div>
@@ -61,7 +61,7 @@
                         type="text" 
                         id="street" 
                         wire:model="street"
-                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50"
+                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50"
                     >
                     @error('street') <span class="text-oxblood text-sm mt-4 block">{{ $message }}</span> @enderror
                 </div>
@@ -73,7 +73,7 @@
                         type="text" 
                         id="location" 
                         wire:model="location"
-                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50"
+                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50"
                     >
                     @error('location') <span class="text-oxblood text-sm mt-4 block">{{ $message }}</span> @enderror
                 </div>
@@ -87,7 +87,7 @@
                         type="email" 
                         id="email" 
                         wire:model="email"
-                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50"
+                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50"
                     >
                     @error('email') <span class="text-oxblood text-sm mt-4 block">{{ $message }}</span> @enderror
                 </div>
@@ -99,7 +99,7 @@
                         type="tel" 
                         id="phone" 
                         wire:model="phone"
-                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50"
+                        class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50"
                     >
                 </div>
             </div>
@@ -111,17 +111,17 @@
                     id="message" 
                     wire:model="message"
                     rows="4"
-                    class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive  bg-white text-olive placeholder-olive/50 resize-none"
+                    class="w-full px-12 py-8 border border-olive/30 rounded-none focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive placeholder-olive/50 resize-none"
                 ></textarea>
             </div>
 
             {{-- Datenschutz --}}
-            <div class="flex items-start gap-12">
+            <div class="flex items-center gap-12">
                 <input 
                     type="checkbox" 
                     id="privacy" 
                     wire:model="privacy"
-                    class="mt-4 w-18 h-18 border-olive/30 rounded text-olive "
+                    class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-0"
                 >
                 <label for="privacy" class="text-sm text-olive">
                     Ich habe die <a href="/datenschutz" target="_blank" class="underline hover:text-oxblood">Datenschutzerklärung</a> gelesen und akzeptiere diese.
