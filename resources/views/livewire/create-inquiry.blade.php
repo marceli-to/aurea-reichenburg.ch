@@ -7,6 +7,25 @@
     @else
         <form wire:submit="save" class="space-y-20">
             <x-honeypot />
+
+            {{-- Wohnungsgrösse Checkboxes --}}
+            <div class="mb-30">
+                <p class="text-md font-bold text-olive uppercase tracking-wider mb-16">Ich interessiere mich für (bitte auswählen):</p>
+                <div class="space-y-12">
+                    @foreach(['2.5-Zimmerwohnung', '3.5-Zimmerwohnung', '4.5-Zimmerwohnung', '5.5-Zimmerwohnung'] as $type)
+                        <label class="flex items-center gap-12 cursor-pointer group">
+                            <input 
+                                type="checkbox" 
+                                wire:model="apartment_types"
+                                value="{{ $type }}"
+                                class="w-18 h-18 border-olive/30 rounded text-olive focus:ring-olive"
+                            >
+                            <span class="text-olive group-hover:text-oxblood transition-colors">{{ $type }}</span>
+                        </label>
+                    @endforeach
+                </div>
+                @error('apartment_types') <span class="text-oxblood text-sm mt-8 block">Bitte wählen Sie mindestens eine Wohnungsgrösse.</span> @enderror
+            </div>
             
             <div class="grid md:grid-cols-2 gap-20">
                 {{-- Vorname --}}
@@ -37,7 +56,7 @@
             <div class="grid md:grid-cols-2 gap-20">
                 {{-- Strasse --}}
                 <div>
-                    <label for="street" class="block text-sm font-bold text-olive mb-8">Strasse *</label>
+                    <label for="street" class="block text-sm font-bold text-olive mb-8">Strasse/Nr. *</label>
                     <input 
                         type="text" 
                         id="street" 
@@ -49,7 +68,7 @@
 
                 {{-- PLZ / Ort --}}
                 <div>
-                    <label for="location" class="block text-sm font-bold text-olive mb-8">PLZ / Ort *</label>
+                    <label for="location" class="block text-sm font-bold text-olive mb-8">PLZ/Ort *</label>
                     <input 
                         type="text" 
                         id="location" 
@@ -85,26 +104,9 @@
                 </div>
             </div>
 
-            {{-- Wohnungsgrösse --}}
+            {{-- Bemerkungen --}}
             <div>
-                <label for="apartment_type" class="block text-sm font-bold text-olive mb-8">Gewünschte Wohnungsgrösse *</label>
-                <select 
-                    id="apartment_type" 
-                    wire:model="apartment_type"
-                    class="w-full px-16 py-12 border border-olive/30 rounded-md focus:border-olive focus:ring-1 focus:ring-olive bg-white text-olive"
-                >
-                    <option value="">Bitte wählen...</option>
-                    <option value="2.5-Zimmerwohnung">2.5-Zimmerwohnung</option>
-                    <option value="3.5-Zimmerwohnung">3.5-Zimmerwohnung</option>
-                    <option value="4.5-Zimmerwohnung">4.5-Zimmerwohnung</option>
-                    <option value="5.5-Zimmerwohnung">5.5-Zimmerwohnung</option>
-                </select>
-                @error('apartment_type') <span class="text-oxblood text-sm mt-4 block">{{ $message }}</span> @enderror
-            </div>
-
-            {{-- Nachricht --}}
-            <div>
-                <label for="message" class="block text-sm font-bold text-olive mb-8">Nachricht</label>
+                <label for="message" class="block text-sm font-bold text-olive mb-8">Bemerkungen</label>
                 <textarea 
                     id="message" 
                     wire:model="message"
@@ -122,7 +124,7 @@
                     class="mt-4 w-18 h-18 border-olive/30 rounded text-olive focus:ring-olive"
                 >
                 <label for="privacy" class="text-sm text-olive">
-                    Ich habe die <a href="/datenschutz" target="_blank" class="underline hover:text-oxblood">Datenschutzerklärung</a> gelesen und akzeptiere diese. *
+                    Ich habe die <a href="/datenschutz" target="_blank" class="underline hover:text-oxblood">Datenschutzerklärung</a> gelesen und akzeptiere diese.
                 </label>
             </div>
             @error('privacy') <span class="text-oxblood text-sm block">{{ $message }}</span> @enderror
@@ -131,11 +133,11 @@
             <div class="pt-10">
                 <button 
                     type="submit"
-                    class="bg-oxblood text-white font-bold uppercase tracking-widest px-30 py-14 rounded-md hover:bg-oxblood/90 transition-all"
+                    class="bg-olive text-white font-bold uppercase tracking-widest px-30 py-14 rounded-md hover:bg-olive/90 transition-all"
                     wire:loading.attr="disabled"
                     wire:loading.class="opacity-50 cursor-wait"
                 >
-                    <span wire:loading.remove>Anfrage senden</span>
+                    <span wire:loading.remove>Absenden</span>
                     <span wire:loading>Wird gesendet...</span>
                 </button>
             </div>

@@ -27,8 +27,8 @@ class CreateInquiry extends Component
 
     public $message = '';
 
-    #[Rule('required')]
-    public $apartment_type = '';
+    #[Rule('required|array|min:1')]
+    public $apartment_types = [];
 
     #[Rule('accepted')]
     public $privacy = false;
@@ -46,7 +46,7 @@ class CreateInquiry extends Component
             'phone' => $this->phone,
             'street' => $this->street,
             'location' => $this->location,
-            'apartment_type' => $this->apartment_type,
+            'apartment_type' => implode(', ', $this->apartment_types),
             'message' => $this->message,
         ]);
 

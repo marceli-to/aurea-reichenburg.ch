@@ -87,11 +87,7 @@
 <x-layout.section class="bg-sand/20 py-40 md:py-60" id="anfrage">
   <x-layout.inner class="scroll-mt-100 md:scroll-mt-160">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-olive mb-10">Interesse anmelden</h2>
-      <p class="text-olive mb-30">
-        <strong>Sie interessieren sich für eine Wohnung im auréa?</strong><br>
-        Hinterlassen Sie uns Ihre Kontaktdaten und wir melden uns bei Ihnen, sobald weitere Informationen verfügbar sind.
-      </p>
+      <h2 class="text-2xl md:text-3xl font-bold text-olive uppercase tracking-wider mb-30">Kontaktformular</h2>
       <livewire:create-inquiry />
     </div>
   </x-layout.inner>
