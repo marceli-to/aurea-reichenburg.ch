@@ -11,7 +11,7 @@
             {{-- Wohnungsgrösse Checkboxes --}}
             <div class="mb-30">
                 <p class="text-md font-bold text-olive uppercase tracking-wider mb-16">Ich interessiere mich für (bitte auswählen):</p>
-                <div class="space-y-12">
+                <div class="grid grid-cols-2 gap-12">
                     @foreach(['2.5-Zimmerwohnung', '3.5-Zimmerwohnung', '4.5-Zimmerwohnung', '5.5-Zimmerwohnung'] as $type)
                         <label class="flex items-center gap-12 cursor-pointer group">
                             <input 
