@@ -51,6 +51,7 @@ class CreateInquiry extends Component
         ]);
 
         $this->submitted = true;
+        $this->dispatch('form-submitted');
     }
 
     public function render()

@@ -1,4 +1,4 @@
-<div>
+<div x-data x-on:form-submitted.window="document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth' })">
     @if($submitted)
         <div>
             <p class="text-xl font-bold text-olive mb-10">Vielen Dank für Ihre Anfrage!</p>
