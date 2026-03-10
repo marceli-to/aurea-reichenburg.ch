@@ -17,7 +17,7 @@
     />
     <article class="text-white md:max-w-[50%] md:py-40 relative top-80 md:top-0 pl-20 pb-100">
       <p><strong>Eingebettet zwischen ländlicher Tradition und imposanter Bergkulisse entsteht ein einzigartiges Wohnensemble aus drei Mehrfamilienhäusern mit 60 Mietwohnungen.</strong></p>
-      <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5- bis 5.5-Zimmerwohnungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug voraussichtlich im Herbst/Winter 2027.</strong></p>
+      <p>Ein Wohnungsangebot für jedes Bedürfnis: 2.5- bis 5.5-Zimmerwohnungen bieten Raum für Vielfalt – vom gemütlichen Rückzugsort für Singles bis zum grosszügigen Zuhause für Familien.<br><strong>Bezug im Herbst/Winter 2027.</strong></p>
     </article>
     <a href="#anfrage" title="Zur Anfrage" class="group">
       <x-icons.badge-start class="w-200 md:w-[250px] h-auto ml-20 md:absolute md:right-20 md:top-0 md:translate-y-full md:mt-20 group-hover:opacity-80 group-hover:-rotate-2 transition-all" />
