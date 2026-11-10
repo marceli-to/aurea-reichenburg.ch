@@ -1,7 +1,8 @@
 ---
-// Olive bar with logo and navigation, sticky at the top. On the home page from lg it starts transparent over
-// the hero (olive links, no logo: the hero shows the big one) and turns into the bar once the hero is scrolled
-// past. Below lg: logo and burger, the menu is a full-screen olive dialog.
+// Olive bar with logo and navigation, sticky at the top. Below lg: logo and burger, the menu is a full-screen olive
+// dialog. On the home page from lg (as in Figma) the header is part of the hero: transparent, olive links, no logo
+// (the hero shows the big one), and it scrolls away with the hero. A second, fixed olive bar slides down once the hero
+// is scrolled past and slides back up when it comes back.
 // Figma: desktop bar 120 px, 205 px margins, logo 144 px, links 24 px bold 100 px apart; mobile bar 100 px,
 // 20 px margins, logo 96 px, burger 40 × 22 (three 4 px bars), menu links 42 px bold 20 px apart.
 import Logo from '../assets/icons/logo-aurea.svg';
@@ -13,24 +14,19 @@ interface Props {
 
 const { overlay = false } = Astro.props;
 const path = Astro.url.pathname.replace(/\/?$/, '/');
+const links = nav.map((item) => ({ ...item, active: path === item.href }));
+const linkClass = 'block py-8 text-nav font-bold transition duration-150';
 ---
 
 <header
   data-header
   class:list={[
-    'group/header top-0 z-30 h-100 w-full bg-olive text-white transition-colors duration-500 lg:h-120',
-    overlay ? 'fixed lg:bg-transparent lg:text-olive lg:[&.is-solid]:bg-olive lg:[&.is-solid]:text-white' : 'sticky',
+    'top-0 z-30 h-100 w-full bg-olive text-white lg:h-120',
+    overlay ? 'fixed lg:absolute lg:bg-transparent lg:text-olive' : 'sticky',
   ]}
-  data-overlay={overlay || undefined}
 >
   <div class="flex h-full items-center justify-between px-20 md:px-64 lg:px-gutter">
-    <a
-      href="/"
-      class:list={[
-        'block w-96 text-white transition-opacity duration-500 lg:w-144',
-        overlay && 'lg:pointer-events-none lg:opacity-0 lg:group-[.is-solid]/header:pointer-events-auto lg:group-[.is-solid]/header:opacity-100',
-      ]}
-    >
+    <a href="/" class:list={['block w-96 text-white lg:w-144', overlay && 'lg:hidden']}>
       <span class="sr-only">auréa Reichenburg – zur Startseite</span>
       <Logo class="h-auto w-full" aria-hidden="true" />
     </a>
@@ -38,26 +34,22 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     <nav aria-label="Hauptnavigation" class="max-lg:hidden absolute left-1/2 -translate-x-1/2">
       <ul class="flex gap-x-60 xl:gap-x-100">
         {
-          nav.map(({ label, href }) => {
-            const active = path === href;
-            return (
-              <li>
-                <a
-                  href={href}
-                  data-nav-link
-                  aria-current={active ? 'page' : undefined}
-                  class:list={[
-                    'block py-8 text-nav font-bold transition duration-150 hover:text-sand',
-                    // Transparent home header (Figma Navi-Punkt «Grün»): stays olive, hover at 60 % opacity
-                    'lg:group-[[data-overlay]:not(.is-solid)]/header:hover:text-inherit lg:group-[[data-overlay]:not(.is-solid)]/header:hover:opacity-60',
-                    active && 'text-sand',
-                  ]}
-                >
-                  {label}
-                </a>
-              </li>
-            );
-          })
+          links.map(({ label, href, active }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={active ? 'page' : undefined}
+                class:list={[
+                  linkClass,
+                  // Transparent home header (Figma Navi-Punkt «Grün»): stays olive, hover at 60 % opacity
+                  overlay ? 'hover:opacity-60' : 'hover:text-sand',
+                  active && 'text-sand',
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))
         }
       </ul>
     </nav>
@@ -74,6 +66,35 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     </button>
   </div>
 
+  {
+    overlay && (
+      // Home page from lg: fixed bar that slides down once the hero is scrolled past. Hidden (and so out of the tab
+      // order and the accessibility tree) until then.
+      <div
+        data-header-bar
+        class="invisible fixed inset-x-0 top-0 h-120 -translate-y-full bg-olive text-white transition-[translate,visibility] duration-800 ease-out max-lg:hidden [&.is-visible]:visible [&.is-visible]:translate-y-0"
+      >
+        <div class="flex h-full items-center px-gutter">
+          <a href="/" class="block w-144">
+            <span class="sr-only">auréa Reichenburg – zur Startseite</span>
+            <Logo class="h-auto w-full" aria-hidden="true" />
+          </a>
+          <nav aria-label="Hauptnavigation" class="absolute left-1/2 -translate-x-1/2">
+            <ul class="flex gap-x-60 xl:gap-x-100">
+              {links.map(({ label, href, active }) => (
+                <li>
+                  <a href={href} aria-current={active ? 'page' : undefined} class:list={[linkClass, 'hover:text-sand', active && 'text-sand']}>
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    )
+  }
+
   {/* Fades in and out; the page keeps its scrollbar while the menu is open */}
   <dialog
     id="menu"
@@ -86,7 +107,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
         <span class="sr-only">auréa Reichenburg – zur Startseite</span>
         <Logo class="h-auto w-full" aria-hidden="true" />
       </a>
-      <button type="button" data-menu-close class="-mr-4 grid size-48 cursor-pointer place-content-center text-white outline-none focus-visible:outline-2 focus-visible:outline-white">
+      <button type="button" data-menu-close class="-mr-4 grid size-48 cursor-pointer place-content-center text-white">
         <span class="sr-only">Menü schliessen</span>
         <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 6l28 28M34 6L6 34" stroke="currentColor" stroke-width="4"></path></svg>
       </button>
@@ -119,13 +140,12 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     matchMedia('(width >= 64rem)').addEventListener('change', (event) => event.matches && menu.close());
   }
 
-  // Home page: the transparent header turns solid once the hero has scrolled behind it
-  const header = document.querySelector<HTMLElement>('[data-header][data-overlay]');
+  // Home page from lg: the fixed bar slides down once the hero has scrolled behind it
+  const bar = document.querySelector<HTMLElement>('[data-header-bar]');
   const hero = document.querySelector<HTMLElement>('[data-hero]');
-  if (header && hero) {
-    const observer = new IntersectionObserver(([entry]) => header.classList.toggle('is-solid', !entry.isIntersecting), {
-      rootMargin: `-${header.offsetHeight || 120}px 0px 0px 0px`,
-    });
-    observer.observe(hero);
+  if (bar && hero) {
+    new IntersectionObserver(([entry]) => bar.classList.toggle('is-visible', !entry.isIntersecting), {
+      rootMargin: '-120px 0px 0px 0px',
+    }).observe(hero);
   }
 </script>
