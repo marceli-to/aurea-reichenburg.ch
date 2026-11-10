@@ -8,7 +8,7 @@
   --color-sand: #e0c5a2;
   --color-oxblood: #964f4c;
 
-  --font-sans: "adelle-sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "adelle-sans", "adelle-sans-fallback", ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale from the Figma text styles (Mobile/… and Desktop/…). Each size grows linearly from the mobile
      layout (393 px) to the desktop layout (1920 px), so one class covers every breakpoint. Line height "normal"
@@ -48,6 +48,28 @@
   --default-transition-timing-function: var(--ease-out);
 }
 
+/* Arial adjusted to Adelle Sans' width and vertical metrics (measured in the browser: size-adjust = Adelle width /
+   Arial width over a German sample, overrides = Adelle ascent/descent divided by size-adjust; no line gap).
+   While the Typekit font loads, text is laid out with these, so the swap does not shift the layout (CLS). */
+@font-face {
+  font-family: "adelle-sans-fallback";
+  src: local("Arial"), local("ArialMT");
+  font-weight: 400;
+  size-adjust: 101.12%;
+  ascent-override: 92.37%;
+  descent-override: 28.88%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "adelle-sans-fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 700;
+  size-adjust: 96.18%;
+  ascent-override: 99.6%;
+  descent-override: 30.46%;
+  line-gap-override: 0%;
+}
+
 /* Component styles live in the components as utility classes (shared ones in src/lib/ui.ts).
    Only element defaults that apply everywhere are set here. */
 @layer base {
@@ -55,6 +77,11 @@
   h2,
   h3 {
     @apply text-balance;
+  }
+  /* No browser focus rings; blob buttons tilt and underline on keyboard focus instead (src/lib/ui.ts) */
+  :focus,
+  :focus-visible {
+    @apply outline-none;
   }
   /* Anchors land below the sticky header (100 px mobile, 120 px desktop) */
   [id] {

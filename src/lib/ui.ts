@@ -5,14 +5,15 @@
  * 0.15 s. No position here: each blob sets relative or absolute itself.
  */
 export const blob =
-  'isolate transition duration-150 ease-out hover:-rotate-2 hover:opacity-80 focus-visible:-rotate-2 focus-visible:opacity-80';
+  'isolate transition duration-150 ease-out hover:-rotate-2 hover:opacity-80 focus-visible:-rotate-2 focus-visible:opacity-80 focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4';
 
 /** The blob shape inside a blob button: stretched behind the label */
 export const blobShape = 'absolute inset-0 -z-10 size-full';
 
 /**
- * Fades a block up as it scrolls into view. Base.astro marks <html> with .js and adds .is-visible
- * (the element also needs data-reveal); without JS or with reduced motion everything is simply visible.
+ * Fades a block up as it scrolls into view (the element also needs data-reveal). Base.astro marks blocks that start
+ * below the visible area with .is-pending and removes it when they come into view; without JS or with reduced
+ * motion everything is simply visible.
  */
 export const reveal =
-  'in-[.js]:translate-y-40 in-[.js]:opacity-0 transition duration-900 ease-out [&.is-visible]:translate-y-0 [&.is-visible]:opacity-100 motion-reduce:in-[.js]:translate-y-0 motion-reduce:in-[.js]:opacity-100';
+  'transition duration-900 ease-out [&.is-pending]:translate-y-40 [&.is-pending]:opacity-0 motion-reduce:[&.is-pending]:translate-y-0 motion-reduce:[&.is-pending]:opacity-100';

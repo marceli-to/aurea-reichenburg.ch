@@ -13,8 +13,11 @@ const { href, tone = 'sand', class: className, ...rest } = Astro.props;
 const external = /^https?:\/\//.test(href);
 ---
 
+{/* Without an address (e.g. the Baubeschrieb PDF before it exists) it is no working link: no href, aria-disabled */}
 <a
-  href={href || '#'}
+  href={href || undefined}
+  role={href ? undefined : 'link'}
+  aria-disabled={href ? undefined : 'true'}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener' : undefined}
   class:list={[

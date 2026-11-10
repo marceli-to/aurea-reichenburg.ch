@@ -18,8 +18,8 @@ import { contact, legalNav, links, tel } from '../data/site';
       <address class="not-italic">
         <strong class="text-h5 font-bold">{contact.company}</strong><br />
         {contact.street}<span class="max-lg:hidden">, </span><br class="lg:hidden" />{contact.postalCode} {contact.city}<br />
-        <a href={tel(contact.phone)} class="hover:underline">{contact.phone}</a><span class="max-lg:hidden">, </span><br class="lg:hidden" />
-        <a href={`mailto:${contact.email}`} class="hover:underline">{contact.email}</a>
+        <a href={tel(contact.phone)} class="inline-block py-2 -my-2 hover:underline">{contact.phone}</a><span class="max-lg:hidden">, </span><br class="lg:hidden" />
+        <a href={`mailto:${contact.email}`} class="inline-block py-2 -my-2 hover:underline">{contact.email}</a>
       </address>
 
       <a href={links.instagram || '#'} target={links.instagram ? '_blank' : undefined} rel={links.instagram ? 'noopener' : undefined} class="block size-28 transition-opacity hover:opacity-70">
@@ -27,16 +27,16 @@ import { contact, legalNav, links, tel } from '../data/site';
         <Instagram class="size-full" aria-hidden="true" />
       </a>
 
-      <ul class="lg:ml-auto">
+      <ul class="leading-24 lg:ml-auto">
         {
           legalNav.map(({ label, href }) => (
             <li>
-              <a href={href} class="hover:underline">{label}</a>
+              <a href={href} class="block w-fit hover:underline">{label}</a>
             </li>
           ))
         }
         <li>
-          <a href={links.agency} target="_blank" rel="noopener" class="hover:underline">design by stoz</a>
+          <a href={links.agency} target="_blank" rel="noopener" class="block w-fit hover:underline">design by stoz</a>
         </li>
       </ul>
     </div>
