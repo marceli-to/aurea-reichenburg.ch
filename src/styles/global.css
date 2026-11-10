@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  /* 1 spacing unit = 1px (in rem), so px-20 is 20px */
+  --spacing: 0.0625rem;
+
+  --color-olive: #535e43;
+  --color-sand: #e0c5a2;
+  --color-oxblood: #964f4c;
+
+  --font-sans: "adelle-sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale from the Figma text styles (Mobile/… and Desktop/…). Each size grows linearly from the mobile
+     layout (393 px) to the desktop layout (1920 px), so one class covers every breakpoint. Line height "normal"
+     is Figma's "Auto", from the font's own metrics.
+     Regular text is set 5 % smaller than the Figma value: the designer's desktop Adelle Sans Regular runs smaller
+     than the Adobe Fonts web version (same line at "19 px" is 370 px wide in Figma, 390 px in the browser, and
+     370 px at 18 px). Bold matches exactly, so bold sizes are the Figma values. */
+  --text-*: initial;
+  --text-label: clamp(0.769rem, 0.677rem + 0.3733vw, 1.125rem); /* Figma 13–19 px → 12.3–18 px: stats labels */
+  --text-label--line-height: normal;
+  --text-base: clamp(1rem, 0.9678rem + 0.131vw, 1.125rem); /* Figma Mobile/p 17, Desktop/p 19 → 16–18 px */
+  --text-base--line-height: clamp(1.3125rem, 1.2964rem + 0.0655vw, 1.375rem); /* 21–22 px, as in Figma */
+  --text-h5: clamp(1rem, 0.9678rem + 0.131vw, 1.125rem); /* 16–18 px bold: lead-ins, lists (Desktop/H5) */
+  --text-h5--line-height: normal;
+  --text-btn: 1.125rem; /* 18 px bold: buttons, accordion titles */
+  --text-btn--line-height: normal;
+  --text-h4: clamp(1.5rem, 1.4035rem + 0.3929vw, 1.875rem); /* 24–30 px: Mobile/H4, Desktop/H4 */
+  --text-h4--line-height: normal;
+  --text-nav: 1.5rem; /* 24 px: main navigation */
+  --text-nav--line-height: normal;
+  --text-menu: 2.625rem; /* 42 px: mobile menu */
+  --text-menu--line-height: normal;
+  --text-display: clamp(2.625rem, 2.3354rem + 1.1788vw, 3.75rem); /* 42–60 px: Mobile/Display, Desktop/Display */
+  --text-display--line-height: clamp(3.1875rem, 2.9623rem + 0.9168vw, 4.0625rem); /* 51–65 px */
+  --text-stat: clamp(3.4375rem, 2.971rem + 1.8991vw, 5.25rem); /* 55–84 px: apartment counts */
+  --text-stat--line-height: clamp(4.1875rem, 3.8014rem + 1.5717vw, 5.6875rem); /* 67–91 px */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-timing-function: var(--ease-out);
+}
+
+/* Component styles live in the components as utility classes (shared ones in src/lib/ui.ts).
+   Only element defaults that apply everywhere are set here. */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply text-balance;
+  }
+  /* Anchors land below the sticky header (100 px mobile, 120 px desktop) */
+  [id] {
+    @apply scroll-mt-100 lg:scroll-mt-120;
+  }
+  *,
+  ::before,
+  ::after {
+    @apply motion-reduce:transition-none! motion-reduce:animate-none!;
+  }
+}

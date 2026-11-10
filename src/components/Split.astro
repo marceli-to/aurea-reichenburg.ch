@@ -1,0 +1,44 @@
+---
+// The design's main building block: half image (or slider, or map), half text. From lg the two sit side by side
+// as two 960 × 960 squares (at 1920 px); the text column is 580 px wide, 205 px from the outer edge.
+// Text is centred vertically; where it is taller than the image, as on Wohnen, 45 px remain above and below.
+// Below lg the text comes first (20 px margins, 50 px top and bottom) and the image follows as a square.
+interface Props {
+  /** Background of the text half; sets the text colours too */
+  tone?: 'white' | 'sand' | 'olive';
+  /** Which side the image is on from lg */
+  media?: 'left' | 'right';
+  id?: string;
+  class?: string;
+}
+
+import { reveal } from '../lib/ui';
+
+const { tone = 'white', media = 'left', id, class: className } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    'grid lg:grid-cols-2',
+    { 'bg-white text-olive': tone === 'white', 'bg-sand text-olive': tone === 'sand', 'bg-olive text-white': tone === 'olive' },
+    className,
+  ]}
+  data-tone={tone}
+>
+  <div
+    class:list={[
+      'flex items-center px-20 py-50 md:px-64 md:py-80 lg:py-45',
+      media === 'left' ? 'lg:col-start-2 lg:pl-[9.1146vw] lg:pr-[10.677vw]' : 'lg:col-start-1 lg:row-start-1 lg:pl-[10.677vw] lg:pr-[9.1146vw]',
+    ]}
+  >
+    <div class:list={['w-full max-w-[36.25rem]', reveal]} data-reveal>
+      <slot />
+    </div>
+  </div>
+  <div class:list={['relative aspect-square overflow-hidden lg:row-start-1 lg:aspect-auto lg:min-h-[50vw]', media === 'left' ? 'lg:col-start-1' : 'lg:col-start-2']}>
+    <div class="absolute inset-0">
+      <slot name="media" />
+    </div>
+  </div>
+</section>

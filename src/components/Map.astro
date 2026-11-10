@@ -1,0 +1,39 @@
+---
+// Mapbox map with the project's pin, ported from anwaltskanzlei-baumgartner.ch. Mapbox (~1.5 MB) is only loaded
+// on this page and only when the map comes near the viewport; without a token the area stays a plain grey field.
+import { map, project } from '../data/site';
+
+const config = { token: import.meta.env.PUBLIC_MAPBOX_TOKEN ?? '', center: project.coordinates, ...map };
+---
+
+<div class="size-full bg-[#e9e7e2]">
+  <div data-map={JSON.stringify(config)} role="region" aria-label={`Karte: ${map.title}`} class="size-full opacity-0 transition-opacity duration-700"></div>
+</div>
+
+<script>
+  import { initMap } from '../scripts/map';
+
+  document.querySelectorAll<HTMLElement>('[data-map]').forEach((el) => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        initMap(el).catch((error) => console.error('Map could not be loaded:', error));
+      },
+      { rootMargin: '400px' },
+    );
+    observer.observe(el);
+  });
+</script>
+
+<style is:global>
+  @reference "../styles/global.css";
+
+  /* Mapbox renders its own controls: square, flat buttons in the site's style */
+  .mapboxgl-ctrl-group {
+    @apply rounded-none! shadow-none!;
+  }
+  .mapboxgl-ctrl-group button {
+    @apply size-36!;
+  }
+</style>

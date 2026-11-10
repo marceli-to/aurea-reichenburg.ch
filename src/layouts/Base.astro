@@ -1,0 +1,135 @@
+---
+import '../styles/global.css';
+import { contact, project, site } from '../data/site';
+import { apartments } from '../data/content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  /** Page name, shown before "auréa Reichenburg SZ" in the title; the home page has none */
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  /** Home page: the header lies transparent over the hero */
+  overlayHeader?: boolean;
+}
+
+const { title, description = site.description, noindex = false, overlayHeader = false } = Astro.props;
+const fullTitle = title ? `${title} – auréa Reichenburg SZ` : 'auréa Reichenburg SZ – 60 Mietwohnungen mit Bergblick';
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og.jpg', Astro.site).href;
+const [longitude, latitude] = project.coordinates;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ApartmentComplex',
+  '@id': `${site.url}/#aurea`,
+  name: 'auréa Reichenburg',
+  url: `${site.url}/`,
+  description: site.description,
+  image: ogImage,
+  numberOfAccommodationUnits: apartments.reduce((sum, { count }) => sum + count, 0),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: project.street,
+    postalCode: project.postalCode,
+    addressLocality: project.city,
+    addressRegion: project.canton,
+    addressCountry: project.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude, longitude },
+  amenityFeature: ['Schwimmteich', 'Schrebergärten mit Gemüsebeet', 'Spielfläche', 'Sauna mit Ruheraum'].map((name) => ({
+    '@type': 'LocationFeatureSpecification',
+    name,
+    value: true,
+  })),
+  containsPlace: apartments.map(({ count, rooms }) => ({
+    '@type': 'Apartment',
+    name: `${rooms}-Zimmerwohnung`,
+    numberOfRooms: Number(rooms),
+    description: `${count} Mietwohnungen mit ${rooms} Zimmern`,
+  })),
+  provider: {
+    '@type': 'RealEstateAgent',
+    name: contact.company,
+    url: contact.url,
+    telephone: contact.phone,
+    email: contact.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: contact.street,
+      postalCode: contact.postalCode,
+      addressLocality: contact.city,
+      addressCountry: 'CH',
+    },
+  },
+};
+---
+
+<!doctype html>
+{/* Scrollbar always present, so nothing shifts when a page is short or the menu opens */}
+<html lang="de-CH" class="scroll-smooth overflow-y-scroll [-webkit-text-size-adjust:100%] motion-reduce:scroll-auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no, date=no" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#535e43" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="auréa Reichenburg" />
+    <meta property="og:locale" content="de_CH" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="auréa Reichenburg SZ – Innenhof mit Bergkulisse" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="auréa in Kurzform, für Sprachmodelle" />
+
+    {/* Adelle Sans (Adobe Fonts kit of the landing page; the domain must be allowed in the kit) */}
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/jbj1dvt.css" />
+
+    {/* Marks JS as available before the first paint, so reveal animations never flash */}
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-dvh flex-col bg-white font-sans text-base text-olive antialiased selection:bg-olive selection:text-sand">
+    <a href="#main" class="sr-only z-50 bg-sand px-16 py-8 font-bold focus:not-sr-only focus:fixed focus:top-8 focus:left-8">Zum Inhalt</a>
+    <Header overlay={overlayHeader} />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Fade sections up as they come into view (styles in global.css)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        },
+        { rootMargin: '0px 0px -10% 0px' },
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

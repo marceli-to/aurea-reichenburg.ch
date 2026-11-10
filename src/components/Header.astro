@@ -1,0 +1,134 @@
+---
+// Olive bar with logo and navigation, sticky at the top. On the home page from lg it starts transparent over
+// the hero (olive links, no logo: the hero shows the big one) and turns into the bar once the hero is scrolled
+// past. Below lg: logo and burger, the menu is a full-screen olive dialog.
+// Figma: desktop bar 120 px, 205 px margins, logo 144 px, links 24 px bold 100 px apart; mobile bar 100 px,
+// 20 px margins, logo 95 px, burger 40 × 22 (three 4 px bars), menu links 42 px bold 20 px apart.
+import Logo from '../assets/icons/logo-aurea.svg';
+import { nav } from '../data/site';
+
+interface Props {
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/?$/, '/');
+---
+
+<header
+  data-header
+  class:list={[
+    'group/header top-0 z-30 h-100 w-full bg-olive text-white transition-colors duration-500 lg:h-120',
+    overlay ? 'fixed lg:bg-transparent lg:text-olive lg:[&.is-solid]:bg-olive lg:[&.is-solid]:text-white' : 'sticky',
+  ]}
+  data-overlay={overlay || undefined}
+>
+  <div class="flex h-full items-center justify-between px-20 md:px-64 lg:px-[10.677vw]">
+    <a
+      href="/"
+      class:list={[
+        'block w-95 text-white transition-opacity duration-500 lg:w-144',
+        overlay && 'lg:pointer-events-none lg:opacity-0 lg:group-[.is-solid]/header:pointer-events-auto lg:group-[.is-solid]/header:opacity-100',
+      ]}
+    >
+      <span class="sr-only">auréa Reichenburg – zur Startseite</span>
+      <Logo class="h-auto w-full" aria-hidden="true" />
+    </a>
+
+    <nav aria-label="Hauptnavigation" class="max-lg:hidden absolute left-1/2 -translate-x-1/2">
+      <ul class="flex gap-x-[min(5.2vw,6.25rem)]">
+        {
+          nav.map(({ label, href }) => {
+            const active = path === href;
+            return (
+              <li>
+                <a
+                  href={href}
+                  data-nav-link
+                  aria-current={active ? 'page' : undefined}
+                  class:list={[
+                    'block py-8 text-nav font-bold transition-[color,opacity] duration-150 hover:text-sand',
+                    // Transparent home header (Figma Navi-Punkt «Grün»): stays olive, hover at 60 % opacity
+                    'lg:group-[[data-overlay]:not(.is-solid)]/header:hover:text-inherit lg:group-[[data-overlay]:not(.is-solid)]/header:hover:opacity-60',
+                    active && 'text-sand',
+                  ]}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <button
+      type="button"
+      data-menu-open
+      aria-haspopup="dialog"
+      aria-controls="menu"
+      class="-mr-4 grid size-48 cursor-pointer place-content-center lg:hidden"
+    >
+      <span class="sr-only">Menü öffnen</span>
+      <svg width="40" height="22" viewBox="0 0 40 22" aria-hidden="true"><path d="M0 2h40M0 11h40M0 20h40" stroke="currentColor" stroke-width="4"></path></svg>
+    </button>
+  </div>
+
+  {/* Fades in and out. The page keeps its scrollbar while the menu is open: the menu is always 1 px scrollable
+     (inner min height), so overscroll-contain applies and scrolling never reaches the page behind it. */}
+  <dialog
+    id="menu"
+    aria-label="Menü"
+    tabindex="-1"
+    class="fixed inset-0 m-0 size-full max-h-none max-w-none overflow-y-scroll overscroll-contain bg-olive text-sand opacity-0 outline-none transition-[opacity,overlay,display] transition-discrete duration-300 [scrollbar-width:none] backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 lg:hidden [&::-webkit-scrollbar]:hidden"
+  >
+    <div class="min-h-[calc(100%+1px)]">
+    <div class="flex h-100 items-center justify-between px-20 md:px-64">
+      <a href="/" class="block w-95 text-white">
+        <span class="sr-only">auréa Reichenburg – zur Startseite</span>
+        <Logo class="h-auto w-full" aria-hidden="true" />
+      </a>
+      <button type="button" data-menu-close class="-mr-4 grid size-48 cursor-pointer place-content-center text-white outline-none focus-visible:outline-2 focus-visible:outline-white">
+        <span class="sr-only">Menü schliessen</span>
+        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 6l28 28M34 6L6 34" stroke="currentColor" stroke-width="4"></path></svg>
+      </button>
+    </div>
+    <nav aria-label="Hauptnavigation" class="px-20 pt-60 md:px-64">
+      <ul class="space-y-20">
+        {
+          nav.map(({ label, href }) => (
+            <li>
+              <a href={href} aria-current={path === href ? 'page' : undefined} class="text-menu font-bold transition-colors hover:text-white aria-[current=page]:text-white">
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    </div>
+  </dialog>
+</header>
+
+<script>
+  const menu = document.querySelector<HTMLDialogElement>('#menu');
+  if (menu) {
+    document.querySelector('[data-menu-open]')?.addEventListener('click', () => {
+      menu.showModal();
+      menu.focus();
+    });
+    menu.querySelector('[data-menu-close]')?.addEventListener('click', () => menu.close());
+    // The menu only exists below lg: close it when the window grows past that, or the page stays inert
+    matchMedia('(width >= 64rem)').addEventListener('change', (event) => event.matches && menu.close());
+  }
+
+  // Home page: the transparent header turns solid once the hero has scrolled behind it
+  const header = document.querySelector<HTMLElement>('[data-header][data-overlay]');
+  const hero = document.querySelector<HTMLElement>('[data-hero]');
+  if (header && hero) {
+    const observer = new IntersectionObserver(([entry]) => header.classList.toggle('is-solid', !entry.isIntersecting), {
+      rootMargin: `-${header.offsetHeight || 120}px 0px 0px 0px`,
+    });
+    observer.observe(hero);
+  }
+</script>

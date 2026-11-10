@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Split from '../components/Split.astro';
+import Heading from '../components/Heading.astro';
+import Prose from '../components/Prose.astro';
+import Button from '../components/Button.astro';
+import Slider from '../components/Slider.astro';
+import Img from '../components/Img.astro';
+import Logo from '../assets/icons/logo-aurea.svg';
+import IconSchwimmteich from '../assets/icons/icon-schwimmteich.svg';
+import IconSchrebergaerten from '../assets/icons/icon-schrebergaerten.svg';
+import IconSpielflaeche from '../assets/icons/icon-spielflaeche.svg';
+import IconSauna from '../assets/icons/icon-sauna.svg';
+import { images, sliders } from '../data/images';
+import { apartments, applicationsFrom, highlights, moveIn } from '../data/content';
+import { links } from '../data/site';
+import { blob, blobShape, reveal } from '../lib/ui';
+
+const icons = {
+  schwimmteich: IconSchwimmteich,
+  schrebergaerten: IconSchrebergaerten,
+  spielflaeche: IconSpielflaeche,
+  sauna: IconSauna,
+};
+---
+
+<Base overlayHeader>
+  <section data-hero class="relative h-[calc(100svh-6.25rem)] min-h-[28rem] overflow-hidden max-lg:mt-100 lg:h-svh lg:min-h-[36rem]">
+    <Img image={images.hero} sizes="100vw" priority />
+    {/* Figma: logo 189 px wide 80 px from the top (mobile), 329 px at 182 / 1080 (desktop) */}
+    <div class="absolute inset-x-0 top-80 flex justify-center text-white lg:top-[16.85%]">
+      <h1 class="w-189 lg:w-[min(17.135vw,20.5625rem)]">
+        <span class="sr-only">auréa Reichenburg SZ</span>
+        <Logo class="h-auto w-full drop-shadow-[0_2px_24px_rgba(0,0,0,0.15)]" aria-hidden="true" />
+      </h1>
+    </div>
+    <a
+      href="#wohnungen"
+      class:list={[blob, 'absolute bottom-44 left-[calc(50%-3.5625rem)] block h-55 w-59 -translate-x-1/2 outline-none lg:bottom-[8.98%] lg:left-1/2']}
+    >
+      <span class="sr-only">Nach unten scrollen</span>
+      <svg viewBox="0 0 61 56" aria-hidden="true" class:list={[blobShape, 'text-sand']}>
+        <path
+          fill="currentColor"
+          d="M58.5664 31.5089C58.664 32.1408 57.5915 33.2142 57.5915 33.5932C57.5915 33.9723 58.0328 34.7124 57.5915 35.47C57.1482 36.2277 57.3905 36.5867 57.2909 36.776C56.7866 37.7345 55.8972 38.9567 55.7 39.2738C54.8134 40.2293 55.9948 41.7567 54.5185 43.0204C52.2573 46.3651 52.2255 46.1959 51.0461 47.8375C49.8667 49.4779 46.5925 49.9756 45.2159 51.0488C45.1183 51.364 42.3239 52.2444 40.3555 52.9405C36.3231 54.3274 32.5368 55.0234 28.9966 55.0234C25.4543 55.0234 22.0624 54.6756 18.817 53.9814C17.7352 53.8548 16.2854 53.3815 14.4654 52.5615C12.6455 51.7403 11.5881 51.2986 11.2932 51.2362C9.6217 50.6044 7.877 49.263 6.05502 47.2127C4.23711 45.161 5.32681 46.2213 3.91581 45.343C2.93872 44.8353 2.25555 44.3083 1.63019 43.6629C0.595158 41.6108 1.20483 39.5922 1.20483 38.6148C1.20483 37.6355 0.934399 35.1466 0.393498 33.1914C-0.147403 31.2335 0.295891 26.4855 0.393498 25.2868C1.20483 20.386 -1.31639 17.9442 1.63416 13.968C3.13416 11.5767 3.46265 8.74745 5.13416 7.98978C5.13416 7.98978 6.10451 7.63337 6.63416 6.79413C7.16381 5.95489 8.26742 5.22702 9.30042 4.28003C10.3334 3.33342 11.6389 2.60843 13.2108 2.10244C13.5056 1.91312 15.474 1.62914 19.1119 1.25086C24.3257 0.620541 27.7663 0.303874 29.4378 0.303873C31.6034 -0.136753 34.3323 -0.0582448 37.6266 0.54015C40.9228 1.14118 42.8159 1.45596 43.306 1.48714C43.8001 1.51945 44.8555 1.86616 46.4782 2.52879C48.1009 3.19141 49.1583 3.71168 49.6504 4.09108C51.2243 4.84762 52.1577 5.44714 52.4525 5.88964L54.5185 8.53978C55.7976 9.35981 56.6821 10.5431 57.1742 12.0907C57.6663 13.6357 58.1584 14.6304 58.6485 15.0722C59.1426 15.7664 59.5839 16.4925 59.9763 17.2498C59.8808 17.6908 59.8299 18.4807 59.8299 19.6167L59.8299 20.5637C60.2244 21.5103 60.1248 22.4238 59.5351 23.3088C59.4375 23.7498 59.3643 24.3028 59.3134 24.9654C59.2647 25.628 59.1426 26.5901 58.9454 27.8526L58.5664 28.7191C57.6798 30.6127 58.4688 30.8771 58.5664 31.5089Z"
+        ></path>
+        <path
+          fill="var(--color-olive)"
+          class="origin-center transition-transform duration-500"
+          d="M36.0253 23.5897L30.1319 29.28C30.0662 29.3367 29.9811 29.3681 29.8929 29.3681C29.8048 29.3681 29.7197 29.3367 29.654 29.28L23.7606 23.5897C23.4437 23.3178 23.031 23.1732 22.6072 23.1858C22.1834 23.1984 21.7806 23.3672 21.4817 23.6575C21.1827 23.9478 21.0102 24.3376 20.9995 24.7468C20.9889 25.1561 21.1409 25.5537 21.4244 25.8581L27.7824 31.9969C28.3424 32.5369 29.1015 32.8402 29.8929 32.8402C30.6844 32.8402 31.4435 32.5369 32.0034 31.9969L38.3615 25.8581C38.6449 25.5537 38.797 25.1561 38.7863 24.7468C38.7757 24.3376 38.6032 23.9478 38.3042 23.6575C38.0052 23.3672 37.6025 23.1984 37.1787 23.1858C36.7549 23.1732 36.3422 23.3178 36.0253 23.5897Z"
+        ></path>
+      </svg>
+    </a>
+  </section>
+
+  <section id="wohnungen" aria-label="Wohnungsangebot" class="bg-olive px-20 py-40 text-sand lg:pt-44 lg:pb-43">
+    <ul class="mx-auto grid max-w-[77.5rem] grid-cols-2 gap-x-20 gap-y-30 lg:grid-cols-4 lg:gap-x-60">
+      {
+        apartments.map(({ count, rooms }) => (
+          <li class="flex flex-col items-center text-center">
+            <span class="text-stat font-bold">{count}</span>
+            <span class="text-label">{rooms}-Zimmerwohnungen</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <Split tone="white" media="right">
+    <Heading>ein zuhause<br />zum ankommen.</Heading>
+    <Prose class="mt-30 lg:mt-50">
+      <h3>Auf gute Nachbarschaft mit Bergblick</h3>
+      <p>
+        Eingebettet zwischen ländlicher Tradition und imposanter Bergkulisse entsteht auf rund 7’300&nbsp;m² ein einzigartiges
+        Wohnensemble aus drei Mehrfamilienhäusern mit 60 Mietwohnungen.
+      </p>
+      <p class="blank">
+        Das vielfältige Wohnungsangebot bietet für jede Lebenssituation das passende Zuhause – vom gemütlichen Rückzugsort für
+        Singles bis hin zum grosszügigen Familienleben mit viel Raum zur Entfaltung.
+      </p>
+      <p>
+        <strong class="text-h5 font-bold">auréa</strong> steht für modernes und verantwortungsbewusstes Wohnen: Alle Wohnungen werden im Minergie-Standard realisiert und
+        erfüllen höchste Anforderungen an Energieeffizienz und Wohnqualität. Der hochwertige Innenausbau mit edlen Materialien im
+        Wohn- und Schlafbereich unterstreicht den Anspruch an Nachhaltigkeit, Ästhetik und Wohnkomfort.
+      </p>
+    </Prose>
+    <div class="mt-20 flex justify-end lg:mt-30"><Button href="/angebot/">angebot</Button></div>
+    <Slider slot="media" images={sliders.zuhause} label="Bilder der Innenräume" />
+  </Split>
+
+  <section data-tone="sand" class="bg-sand px-20 py-50 text-olive md:px-64 lg:py-112">
+    <div class:list={['mx-auto max-w-[45.875rem]', reveal]} data-reveal>
+      <Heading>besondere highlights.</Heading>
+      <ul class="mt-30 border-b border-olive lg:mt-50">
+        {
+          highlights.map(({ icon, label }) => {
+            const Icon = icons[icon];
+            return (
+              <li class="flex items-center gap-20 border-t border-olive py-15 text-h5 font-bold">
+                <Icon class="size-28 shrink-0" aria-hidden="true" />
+                {label}
+              </li>
+            );
+          })
+        }
+      </ul>
+      <div class="mt-30 flex justify-end"><Button href="/wohnen/" tone="olive">wohnen</Button></div>
+    </div>
+  </section>
+
+  <Split tone="olive" media="left">
+    <Heading>etappe<br />für etappe.</Heading>
+    <Prose class="mt-30 lg:mt-50">
+      <p>Die drei Gebäude werden etappenweise fertiggestellt. Entsprechend erfolgt auch die Vermietung gestaffelt.</p>
+      <p>Die voraussichtlichen Bezugstermine sind wie folgt:</p>
+      <dl class="grid grid-cols-[6.5625rem_auto] lg:grid-cols-[8.75rem_auto]">
+        {
+          moveIn.map(({ building, date }) => (
+            <>
+              <dt class="text-h5 font-bold">{building}:</dt>
+              <dd>{date}</dd>
+            </>
+          ))
+        }
+      </dl>
+      <p>
+        Ab dem {applicationsFrom} können Bewerbungen für die Wohneinheiten in Haus 11 eingereicht werden.<br />
+        Wählen Sie Ihre Wunschwohnung direkt im Navigator aus und reichen Sie Ihre Bewerbung über den bereitgestellten Link digital
+        ein.
+      </p>
+      <p>Für die Wohnungen in Haus 9 und 18 können Sie sich zu einem späteren Zeitpunkt bewerben.</p>
+    </Prose>
+    <div class="mt-20 flex justify-end lg:mt-30"><Button href={links.navigator}>zum navigator</Button></div>
+    <Slider slot="media" images={sliders.etappe} label="Bilder der Wohnungen" />
+  </Split>
+</Base>

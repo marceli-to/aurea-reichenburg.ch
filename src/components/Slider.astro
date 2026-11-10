@@ -1,0 +1,74 @@
+---
+// Image slider (Swiper) with the round sand arrows from the design. Fills its box.
+import Img from './Img.astro';
+import type { Rendering } from '../data/images';
+import { blob, blobShape } from '../lib/ui';
+
+interface Props {
+  images: Rendering[];
+  label: string;
+}
+
+const { images, label } = Astro.props;
+
+const arrow =
+  'M24.6433 0.976033C25.1373 0.912522 25.9765 1.61039 26.2728 1.61039C26.5691 1.61039 27.1478 1.32327 27.7401 1.61039C28.3325 1.89884 28.6131 1.74115 28.7612 1.80598C29.5105 2.13416 30.4661 2.71284 30.7139 2.84118C31.461 3.41808 32.6552 2.64933 33.6431 3.60994C36.2581 5.08128 36.1258 5.10199 37.4092 5.86942C38.6917 6.63685 39.0809 8.76729 39.9199 9.66306C40.1663 9.72657 40.8547 11.5449 41.3989 12.8257C42.4831 15.4495 43.0273 17.9132 43.0273 20.2168C43.0273 22.5217 42.7554 24.7287 42.2127 26.8405C42.1137 27.5444 41.7436 28.4878 41.1025 29.672C40.4605 30.8563 40.1152 31.5443 40.0664 31.7361C39.5725 32.8238 38.5237 33.959 36.9208 35.1446C35.3167 36.3275 36.1457 35.6184 35.459 36.5366C35.0621 37.1723 34.6501 37.6169 34.1455 38.0238C32.5411 38.6973 30.9629 38.3006 30.1988 38.3006C29.4331 38.3006 27.4873 38.4765 25.9586 38.8285C24.428 39.1804 20.7158 38.892 19.7787 38.8285C15.9472 38.3006 14.0381 39.9411 10.9295 38.0212C9.05992 37.0452 6.84793 36.8314 6.25558 35.7438C6.25558 35.7438 5.97692 35.1124 5.32079 34.7678C4.66466 34.4231 4.0956 33.705 3.35522 33.0328C2.61514 32.3607 2.04834 31.5112 1.65275 30.4884C1.50473 30.2966 1.28271 29.0158 0.986966 26.6487C0.494169 23.2561 0.246593 21.0173 0.246593 19.9297C-0.0978961 18.5205 -0.0365172 16.7449 0.431319 14.6014C0.901211 12.4565 1.14732 11.2247 1.17169 10.9058C1.19695 10.5843 1.46802 9.89756 1.98607 8.84169C2.50412 7.78581 2.91088 7.09778 3.2075 6.77758C3.79897 5.75346 4.26769 5.14613 4.61365 4.95426L6.68558 3.60994C7.32669 2.77768 8.25178 2.2021 9.46176 1.8819C10.6697 1.5617 11.4473 1.2415 11.7927 0.92262C12.3354 0.601095 12.9031 0.313971 13.4952 0.0586031C13.84 0.120791 14.4576 0.153868 15.3457 0.153868H16.0861C16.8261 -0.102823 17.5404 -0.0379931 18.2323 0.34572C18.5771 0.409232 19.0094 0.456867 19.5274 0.489945C20.0455 0.521688 20.7976 0.60109 21.7847 0.729435L22.4621 0.976033C23.9426 1.55294 24.1493 1.03954 24.6433 0.976033Z';
+const chevron =
+  'M16.6168 13.8045L22.3071 19.698C22.3638 19.7637 22.3952 19.8487 22.3952 19.9369C22.3952 20.025 22.3638 20.1101 22.3071 20.1758L16.6168 26.0693C16.3449 26.3862 16.2003 26.7989 16.2129 27.2227C16.2255 27.6465 16.3943 28.0492 16.6846 28.3482C16.9749 28.6471 17.3647 28.8196 17.7739 28.8303C18.1832 28.8409 18.5808 28.6889 18.8852 28.4054L25.024 22.0474C25.564 21.4874 25.8673 20.7283 25.8673 19.9369C25.8673 19.1455 25.564 18.3864 25.024 17.8264L18.8852 11.4684C18.5808 11.1849 18.1832 11.0329 17.7739 11.0435C17.3647 11.0541 16.9749 11.2267 16.6846 11.5256C16.3943 11.8246 16.2255 12.2273 16.2129 12.6511C16.2003 13.0749 16.3449 13.4876 16.6168 13.8045Z';
+---
+
+<div class="relative size-full" data-slider role="region" aria-roledescription="Bildergalerie" aria-label={label}>
+  <div class="swiper h-full">
+    <div class="swiper-wrapper h-full">
+      {
+        images.map((image, i) => (
+          <div class="swiper-slide h-full" role="group" aria-roledescription="Bild" aria-label={`${i + 1} von ${images.length}`}>
+            <Img image={image} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    images.length > 1 &&
+      (['prev', 'next'] as const).map((direction) => (
+        <button
+          type="button"
+          data-slider-button={direction}
+          class:list={[
+            blob,
+            'absolute top-1/2 z-10 -translate-y-1/2 block h-39 w-43 cursor-pointer text-olive outline-none',
+            direction === 'prev' ? 'left-20 lg:left-50' : 'right-20 lg:right-50',
+          ]}
+        >
+          <span class="sr-only">{direction === 'prev' ? 'Vorheriges Bild' : 'Nächstes Bild'}</span>
+          <svg viewBox="0 0 44 40" aria-hidden="true" class:list={[blobShape, 'text-sand', direction === 'prev' && '-scale-x-100']}>
+            <path fill="currentColor" d={arrow} />
+            <path fill="var(--color-olive)" d={chevron} />
+          </svg>
+        </button>
+      ))
+  }
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { A11y, Keyboard } from 'swiper/modules';
+  import 'swiper/css';
+
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((root) => {
+    const container = root.querySelector<HTMLElement>('.swiper');
+    if (!container) return;
+    const swiper = new Swiper(container, {
+      modules: [A11y, Keyboard],
+      loop: true,
+      speed: 700,
+      grabCursor: true,
+      keyboard: { enabled: true, onlyInViewport: true },
+      a11y: { enabled: true, slideRole: 'group' },
+    });
+    root.querySelector('[data-slider-button="prev"]')?.addEventListener('click', () => swiper.slidePrev());
+    root.querySelector('[data-slider-button="next"]')?.addEventListener('click', () => swiper.slideNext());
+  });
+</script>

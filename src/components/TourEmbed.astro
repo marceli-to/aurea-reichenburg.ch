@@ -1,0 +1,47 @@
+---
+// Beyonity realtime tour of the show flat (Figma «Embed / Realtime-Tour»): a preview image, darkened by 30 %,
+// with the round sand button «musterwohnung digital besichtigen» (230 × 213). The iframe only loads on click,
+// then replaces the preview. Without JS the button opens the tour in a new tab.
+import Img from './Img.astro';
+import { images } from '../data/images';
+import { embeds } from '../data/site';
+import { blob, blobShape } from '../lib/ui';
+---
+
+<div class="absolute inset-0" data-tour={embeds.tour}>
+  <Img image={images.wohnzimmer} sizes="100vw" priority class="object-[30%_50%] sm:object-center" />
+  <div class="absolute inset-0 bg-[rgb(26_31_20/0.3)]"></div>
+  <div class="absolute inset-0 grid place-items-center">
+    <a
+      href={embeds.tour}
+      target="_blank"
+      rel="noopener"
+      data-tour-open
+      class:list={[blob, 'relative grid h-213 w-230 place-items-center text-center text-btn font-bold text-olive outline-none']}
+    >
+      <svg viewBox="0 0 230 213" preserveAspectRatio="none" aria-hidden="true" class:list={[blobShape, 'text-sand']}>
+        <path
+          fill="currentColor"
+          d="M131.667 5.33064C134.309 4.98377 138.798 8.79522 140.383 8.79522C141.968 8.79522 145.063 7.22708 148.231 8.79522C151.4 10.3706 152.901 9.50938 153.693 9.86341C157.701 11.6558 162.812 14.8163 164.138 15.5172C168.134 18.668 174.521 14.4694 179.805 19.7158C193.792 27.7516 193.085 27.8647 199.95 32.0561C206.809 36.2474 208.891 47.8829 213.379 52.7752C214.697 53.122 218.379 63.0528 221.29 70.0479C227.089 84.3779 230 97.8335 230 110.415C230 123.003 228.545 135.057 225.642 146.59C225.113 150.435 223.134 155.587 219.704 162.055C216.271 168.523 214.423 172.28 214.163 173.328C211.52 179.268 205.911 185.469 197.337 191.944C188.757 198.404 193.191 194.531 189.518 199.546C187.395 203.018 185.191 205.446 182.492 207.668C173.911 211.347 165.469 209.18 161.382 209.18C157.287 209.18 146.879 210.141 138.702 212.063C130.515 213.985 110.659 212.41 105.647 212.063C85.1527 209.18 74.9413 218.14 58.3138 207.654C48.3138 202.324 36.4822 201.156 33.3138 195.216C33.3138 195.216 31.8233 191.768 28.3138 189.885C24.8043 188.003 21.7604 184.081 17.8003 180.41C13.8417 176.739 10.81 172.1 8.69402 166.514C7.90229 165.466 6.71473 158.471 5.13286 145.543C2.49697 127.014 1.17273 114.787 1.17273 108.847C-0.669888 101.151 -0.341582 91.4527 2.1608 79.7459C4.67417 68.0319 5.99056 61.3041 6.12094 59.5625C6.25604 57.8064 7.70594 54.0559 10.4769 48.2892C13.2479 42.5225 15.4236 38.7648 17.0101 37.016C20.1738 31.4227 22.6809 28.1058 24.5314 27.0579L35.6138 19.7158C39.043 15.1704 43.9912 12.0269 50.4631 10.2781C56.9241 8.52928 61.0837 6.7805 62.931 5.03893C65.834 3.2829 68.8705 1.71476 72.0373 0.320063C73.8815 0.659705 77.1851 0.840356 81.9353 0.840356H85.8955C89.854 -0.561572 93.6744 -0.207501 97.3753 1.88817C99.2195 2.23503 101.532 2.49519 104.303 2.67586C107.074 2.84922 111.097 3.28288 116.376 3.98384L120 5.33064C127.919 8.48144 129.024 5.67751 131.667 5.33064Z"
+        ></path>
+      </svg>
+      <span>musterwohnung<br />digital besichtigen</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tour]').forEach((root) => {
+    root.querySelector('[data-tour-open]')?.addEventListener('click', (event) => {
+      event.preventDefault();
+      const iframe = document.createElement('iframe');
+      iframe.src = root.dataset.tour ?? '';
+      iframe.title = 'Musterwohnung auréa: digitale Besichtigung';
+      iframe.allow = 'fullscreen; xr-spatial-tracking; gyroscope; accelerometer';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 size-full border-0';
+      root.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+</script>

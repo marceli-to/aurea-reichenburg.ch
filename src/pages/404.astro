@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Heading from '../components/Heading.astro';
+import Button from '../components/Button.astro';
+---
+
+<Base title="Seite nicht gefunden" noindex>
+  <section data-tone="sand" class="bg-sand px-20 py-50 md:px-64 lg:py-140">
+    <div class="mx-auto max-w-[45.875rem]">
+      <Heading as="h1">diese seite<br />gibt es nicht.</Heading>
+      <p class="mt-24">Vielleicht finden Sie, was Sie suchen, auf der Startseite.</p>
+      <div class="mt-30"><Button href="/" tone="olive">zur startseite</Button></div>
+    </div>
+  </section>
+</Base>

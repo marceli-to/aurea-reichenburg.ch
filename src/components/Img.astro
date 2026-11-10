@@ -1,0 +1,33 @@
+---
+// A rendering as <picture> with AVIF and WebP in several widths (JPEG fallback), filling its box.
+import { Picture } from 'astro:assets';
+import type { Rendering } from '../data/images';
+
+interface Props {
+  image: Rendering;
+  /** CSS sizes: how wide the image is shown. Default: half the viewport from lg, full width below */
+  sizes?: string;
+  /** For the image at the top of the page */
+  priority?: boolean;
+  class?: string;
+}
+
+const { image, sizes = '(min-width: 64rem) 50vw, 100vw', priority = false, class: className } = Astro.props;
+const widths = [480, 768, 1024, 1440, 1920, 2560].filter((w) => w <= image.src.width);
+if (!widths.includes(image.src.width) && image.src.width < 2560) widths.push(image.src.width);
+---
+
+<Picture
+  src={image.src}
+  alt={image.alt}
+  widths={widths}
+  sizes={sizes}
+  formats={['avif', 'webp']}
+  fallbackFormat="jpg"
+  quality={78}
+  loading={priority ? 'eager' : 'lazy'}
+  fetchpriority={priority ? 'high' : undefined}
+  decoding={priority ? 'sync' : 'async'}
+  class:list={['size-full object-cover', className]}
+  style={image.position ? `object-position: ${image.position}` : undefined}
+/>

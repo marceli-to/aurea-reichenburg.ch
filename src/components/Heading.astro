@@ -1,0 +1,14 @@
+---
+// Section heading (Figma Mobile/Display, Desktop/Display): lowercase, olive on light backgrounds and sand on olive
+// (the colour follows the surrounding section through data-tone). Followed by 30 px (mobile) or 50 px (desktop).
+interface Props {
+  as?: 'h1' | 'h2';
+  class?: string;
+}
+
+const { as: Tag = 'h2', class: className } = Astro.props;
+---
+
+<Tag class:list={['text-display font-bold [[data-tone=olive]_&]:text-sand', className]}>
+  <slot />
+</Tag>

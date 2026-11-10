@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Split from '../components/Split.astro';
+import Heading from '../components/Heading.astro';
+import Prose from '../components/Prose.astro';
+import Img from '../components/Img.astro';
+import { images } from '../data/images';
+import { embeds } from '../data/site';
+---
+
+<Base
+  title="Angebot"
+  description="60 Mietwohnungen mit 2.5 bis 5.5 Zimmern in drei Mehrfamilienhäusern in Reichenburg SZ – mit Schwimmteich, Sauna, Spielfläche und Schrebergärten."
+>
+  {/* Beyonity apartment navigator (Figma: iframe, loads with the page, 1920 × 1000 / 393 × 640) */}
+  <section id="navigator" aria-label="Wohnungsnavigator" class="relative h-[40rem] bg-olive sm:h-auto sm:aspect-[16/9] lg:aspect-[1920/1000]">
+    <iframe
+      src={embeds.navigator}
+      title="Wohnungsnavigator auréa: verfügbare Wohnungen auswählen"
+      allow="fullscreen"
+      allowfullscreen
+      class="absolute inset-0 size-full border-0"
+    ></iframe>
+  </section>
+
+  <Split tone="sand" media="left">
+    <Heading as="h1">entdecken.<br />auswählen.<br />ankommen.</Heading>
+    <Prose class="mt-30 lg:mt-50">
+      <h2>60 Mietwohnungen in drei Mehrfamilienhäusern</h2>
+      <p>
+        Das vielfältige Wohnungsangebot mit 2.5- bis 5.5-Zimmerwohnungen bietet für jede Lebenssituation das passende Zuhause – vom
+        gemütlichen Rückzugsort für Singles bis hin zum grosszügigen Familienleben mit viel Raum zur Entfaltung.
+      </p>
+    </Prose>
+    <Img slot="media" image={images.sauna} />
+  </Split>
+</Base>
