@@ -27,16 +27,16 @@ const icons = {
 <Base overlayHeader>
   <section data-hero class="relative h-[calc(100svh-100px)] min-h-448 overflow-hidden max-lg:mt-100 lg:h-svh lg:min-h-576">
     <Img image={images.hero} sizes="100vw" priority />
-    {/* Figma: logo 189 px wide 80 px from the top (mobile), 329 px at 182 / 1080 (desktop) */}
+    {/* Figma: logo 188 px wide 80 px from the top (mobile), 328 px about a sixth down (desktop) */}
     <div class="absolute inset-x-0 top-80 flex justify-center text-white lg:top-1/6">
-      <h1 class="w-189 lg:w-329">
+      <h1 class="w-188 lg:w-328">
         <span class="sr-only">auréa Reichenburg SZ</span>
         <Logo class="h-auto w-full drop-shadow-lg" aria-hidden="true" />
       </h1>
     </div>
     <a
       href="#wohnungen"
-      class:list={[blob, 'absolute bottom-44 left-1/2 -ml-57 block h-55 w-59 -translate-x-1/2 outline-none lg:bottom-1/12 lg:ml-0']}
+      class:list={[blob, 'absolute bottom-44 left-1/2 -ml-56 block h-56 w-60 -translate-x-1/2 outline-none lg:bottom-1/12 lg:ml-0']}
     >
       <span class="sr-only">Nach unten scrollen</span>
       <svg viewBox="0 0 61 56" aria-hidden="true" class:list={[blobShape, 'text-sand']}>
@@ -53,8 +53,8 @@ const icons = {
     </a>
   </section>
 
-  <section id="wohnungen" aria-label="Wohnungsangebot" class="bg-olive px-20 py-40 text-sand lg:pt-44 lg:pb-43">
-    <ul class="mx-auto grid max-w-1240 grid-cols-2 gap-x-20 gap-y-30 lg:grid-cols-4 lg:gap-x-60">
+  <section id="wohnungen" aria-label="Wohnungsangebot" class="bg-olive px-20 py-40 text-sand lg:pt-44 lg:pb-44">
+    <ul class="mx-auto grid max-w-1240 grid-cols-2 gap-x-20 gap-y-32 lg:grid-cols-4 lg:gap-x-60">
       {
         apartments.map(({ count, rooms }) => (
           <li class="flex flex-col items-center text-center">
@@ -68,13 +68,13 @@ const icons = {
 
   <Split tone="white" media="right">
     <Heading>ein zuhause<br />zum ankommen.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <h3>Auf gute Nachbarschaft mit Bergblick</h3>
       <p>
         Eingebettet zwischen ländlicher Tradition und imposanter Bergkulisse entsteht auf rund 7’300&nbsp;m² ein einzigartiges
         Wohnensemble aus drei Mehrfamilienhäusern mit 60 Mietwohnungen.
       </p>
-      <p class="blank">
+      <p>
         Das vielfältige Wohnungsangebot bietet für jede Lebenssituation das passende Zuhause – vom gemütlichen Rückzugsort für
         Singles bis hin zum grosszügigen Familienleben mit viel Raum zur Entfaltung.
       </p>
@@ -84,19 +84,19 @@ const icons = {
         Wohn- und Schlafbereich unterstreicht den Anspruch an Nachhaltigkeit, Ästhetik und Wohnkomfort.
       </p>
     </Prose>
-    <div class="mt-20 flex justify-end lg:mt-30"><Button href="/angebot/">angebot</Button></div>
+    <div class="mt-20 flex justify-end lg:mt-32"><Button href="/angebot/">angebot</Button></div>
     <Slider slot="media" images={sliders.zuhause} label="Bilder der Innenräume" />
   </Split>
 
-  <section data-tone="sand" class="bg-sand px-20 py-50 text-olive md:px-64 lg:py-112">
+  <section data-tone="sand" class="bg-sand px-20 py-48 text-olive md:px-64 lg:py-112">
     <div class:list={['mx-auto max-w-narrow', reveal]} data-reveal>
       <Heading>besondere highlights.</Heading>
-      <ul class="mt-30 border-b border-olive lg:mt-50">
+      <ul class="mt-32 border-b border-olive lg:mt-48">
         {
           highlights.map(({ icon, label }) => {
             const Icon = icons[icon];
             return (
-              <li class="flex items-center gap-20 border-t border-olive py-15 text-h5 font-bold">
+              <li class="flex items-center gap-20 border-t border-olive py-16 text-h5 font-bold">
                 <Icon class="size-28 shrink-0" aria-hidden="true" />
                 {label}
               </li>
@@ -104,20 +104,20 @@ const icons = {
           })
         }
       </ul>
-      <div class="mt-30 flex justify-end"><Button href="/wohnen/" tone="olive">wohnen</Button></div>
+      <div class="mt-32 flex justify-end"><Button href="/wohnen/" tone="olive">wohnen</Button></div>
     </div>
   </section>
 
   <Split tone="olive" media="left">
     <Heading>etappe<br />für etappe.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <p>Die drei Gebäude werden etappenweise fertiggestellt. Entsprechend erfolgt auch die Vermietung gestaffelt.</p>
       <p>Die voraussichtlichen Bezugstermine sind wie folgt:</p>
       <dl>
         {
           moveIn.map(({ building, date }) => (
             <div class="flex">
-              <dt class="w-105 shrink-0 text-h5 font-bold lg:w-140">{building}:</dt>
+              <dt class="w-104 shrink-0 text-h5 font-bold lg:w-140">{building}:</dt>
               <dd>{date}</dd>
             </div>
           ))
@@ -130,7 +130,7 @@ const icons = {
       </p>
       <p>Für die Wohnungen in Haus 9 und 18 können Sie sich zu einem späteren Zeitpunkt bewerben.</p>
     </Prose>
-    <div class="mt-20 flex justify-end lg:mt-30"><Button href={links.navigator}>zum navigator</Button></div>
+    <div class="mt-20 flex justify-end lg:mt-32"><Button href={links.navigator}>zum navigator</Button></div>
     <Slider slot="media" images={sliders.etappe} label="Bilder der Wohnungen" />
   </Split>
 </Base>

@@ -3,7 +3,7 @@
 // the hero (olive links, no logo: the hero shows the big one) and turns into the bar once the hero is scrolled
 // past. Below lg: logo and burger, the menu is a full-screen olive dialog.
 // Figma: desktop bar 120 px, 205 px margins, logo 144 px, links 24 px bold 100 px apart; mobile bar 100 px,
-// 20 px margins, logo 95 px, burger 40 × 22 (three 4 px bars), menu links 42 px bold 20 px apart.
+// 20 px margins, logo 96 px, burger 40 × 22 (three 4 px bars), menu links 42 px bold 20 px apart.
 import Logo from '../assets/icons/logo-aurea.svg';
 import { nav } from '../data/site';
 
@@ -27,7 +27,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     <a
       href="/"
       class:list={[
-        'block w-95 text-white transition-opacity duration-500 lg:w-144',
+        'block w-96 text-white transition-opacity duration-500 lg:w-144',
         overlay && 'lg:pointer-events-none lg:opacity-0 lg:group-[.is-solid]/header:pointer-events-auto lg:group-[.is-solid]/header:opacity-100',
       ]}
     >
@@ -82,7 +82,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     class="fixed inset-0 m-0 size-full max-h-none max-w-none overflow-y-auto bg-olive text-sand opacity-0 outline-none transition-[opacity,overlay,display] transition-discrete duration-300 backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 lg:hidden"
   >
     <div class="flex h-100 items-center justify-between px-20 md:px-64">
-      <a href="/" class="block w-95 text-white">
+      <a href="/" class="block w-96 text-white">
         <span class="sr-only">auréa Reichenburg – zur Startseite</span>
         <Logo class="h-auto w-full" aria-hidden="true" />
       </a>

@@ -24,7 +24,7 @@ import { reveal } from '../lib/ui';
 
   <Split tone="olive" media="left">
     <Heading as="h1">natürlich.<br />geborgen.<br />zuhause.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <h3>Vielfältige Wohnformen</h3>
       <p>
         Mehrere unterschiedliche Wohnungstypen erwarten Sie: Neben den Garten- und Geschosswohnungen bieten die Attikawohnungen mit
@@ -45,13 +45,13 @@ import { reveal } from '../lib/ui';
         Ein separates Kellerabteil mit eigenem Stromanschluss rundet das Angebot zusätzlich ab.
       </p>
     </Prose>
-    <div class="mt-20 flex justify-end lg:mt-30"><Button href="/angebot/">angebot</Button></div>
+    <div class="mt-20 flex justify-end lg:mt-32"><Button href="/angebot/">angebot</Button></div>
     <Slider slot="media" images={sliders.natuerlich} label="Bilder der Wohnräume" />
   </Split>
 
   <Split tone="white" media="right">
     <Heading>hochwertiger<br />ausbau.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <p>
         Grosszügige Grundrisse und ein hochwertiger Ausbau sorgen für ein Wohngefühl, das in jeder Hinsicht überzeugt: Alle Wohnungen
         verfügen über eine hochwertige Einbauküche mit grossem Kühlschrank inkl. TK-Schubladen, Backofen mit Steamer-Funktion und
@@ -59,13 +59,13 @@ import { reveal } from '../lib/ui';
         Spiegelschrank und dem passenden Unterbauschrank praktischen Stauraum.
       </p>
     </Prose>
-    <div class="mt-20 flex justify-end lg:mt-30"><Button href="#baubeschrieb">baubeschrieb</Button></div>
+    <div class="mt-20 flex justify-end lg:mt-32"><Button href="#baubeschrieb">baubeschrieb</Button></div>
     <Slider slot="media" images={sliders.ausbau} label="Bilder von Küche und Bad" />
   </Split>
 
   <Split tone="sand" media="left">
     <Heading>raum für<br />viel natur.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <p>
         Ein besonderes Highlight bildet die Umgebungsgestaltung: grosszügige Grünflächen mit einheimischer Bepflanzung schaffen eine
         Wohlfühloase und verleihen der Überbauung einen unverwechselbaren Charakter. Ein lebendiger Ort für Begegnung, Entspannung und
@@ -77,20 +77,20 @@ import { reveal } from '../lib/ui';
         nachhaltiges Wohnen. Die energieeffiziente Bauweise sorgt für ein angenehmes, gesundes Raumklima – im Winter sorgt die
         Bodenheizung für eine behagliche Wärme, während im Sommer das integrierte Free-Cooling für kühlere Temperaturen sorgt.
       </p>
-      <p class="blank">
+      <p>
         Unterstützt wird dies durch eine hauseigene Photovoltaikanlage, die einen grossen Teil des Strombedarfs umweltfreundlich direkt
         vor Ort produziert.
       </p>
     </Prose>
-    <div class="mt-20 flex justify-end lg:mt-30"><Button href="/faq/" tone="olive">faq</Button></div>
+    <div class="mt-20 flex justify-end lg:mt-32"><Button href="/faq/" tone="olive">faq</Button></div>
     <Img slot="media" image={images.teich} />
   </Split>
 
-  <section id="baubeschrieb" data-tone="sand" class="bg-sand px-20 py-50 text-olive md:px-64 lg:py-120">
+  <section id="baubeschrieb" data-tone="sand" class="bg-sand px-20 py-48 text-olive md:px-64 lg:py-120">
     <div class:list={['mx-auto max-w-narrow', reveal]} data-reveal>
       <Heading>baubeschrieb.</Heading>
-      <Accordion items={construction.items} class="mt-30 lg:mt-50" />
-      <div class="mt-30 flex flex-col items-start gap-12 lg:mt-50 lg:flex-row lg:items-center lg:justify-between">
+      <Accordion items={construction.items} class="mt-32 lg:mt-48" />
+      <div class="mt-32 flex flex-col items-start gap-12 lg:mt-48 lg:flex-row lg:items-center lg:justify-between">
         <p>{construction.date} / Änderungen vorbehalten</p>
         <Button href={links.constructionPdf} tone="olive">baubeschrieb</Button>
       </div>

@@ -16,7 +16,7 @@ import { links, project } from '../data/site';
 >
   <Split tone="olive" media="left">
     <Heading as="h1">berge.<br />panorama.<br />weitsicht.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <p>
         Abseits von der Kantonsstrasse gelegen, bietet auréa eine besonders ruhige Lage und grenzt unmittelbar an die
         Landwirtschaftszone an. Auch das Umfeld wird im Zuge der Quartierentwicklung aufgewertet: Mit der Entwicklung der
@@ -26,21 +26,21 @@ import { links, project } from '../data/site';
         Alltag.
       </p>
     </Prose>
-    <h2 class="mt-30 text-h4 font-bold text-sand lg:mt-50">Hier finden Sie auréa</h2>
+    <h2 class="mt-32 text-h4 font-bold text-sand lg:mt-48">Hier finden Sie auréa</h2>
     <address class="mt-20 not-italic">{project.street}, {project.postalCode} {project.city} {project.canton}</address>
-    <div class="mt-30 flex justify-end"><Button href={links.route}>route planen</Button></div>
+    <div class="mt-32 flex justify-end"><Button href={links.route}>route planen</Button></div>
     <Map slot="media" />
   </Split>
 
   <Split tone="sand" media="right">
     <Heading>ein neues<br />quartier.</Heading>
-    <Prose class="mt-30 lg:mt-50">
+    <Prose class="mt-32 lg:mt-48">
       <p>
         Das Neubauprojekt liegt am Rand des Quartiers «Obere Allmeind» und grenzt direkt an die Landwirtschaftszone. Geniessen Sie
         spektakuläre Sonnenaufgänge und ein beeindruckendes Bergpanorama mit Sicht auf den Säntis und die Glarner Alpen.
       </p>
     </Prose>
-    <div class="mt-20 flex flex-col items-end gap-12 lg:mt-30 lg:flex-row lg:justify-end lg:gap-20">
+    <div class="mt-20 flex flex-col items-end gap-12 lg:mt-32 lg:flex-row lg:justify-end lg:gap-20">
       <Button href={links.municipality} tone="olive">gemeinde reichenburg</Button>
       <Button href={links.navigator} tone="olive">zum navigator</Button>
     </div>

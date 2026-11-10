@@ -1,20 +1,20 @@
 ---
-// Figma «Footer». Desktop: 205 px margins, 40 px top and bottom; Sanjo logo (197 px), address and Instagram 30 px
-// apart and aligned at the bottom, legal links on the right. Mobile: 27 px margins, 35 px top and bottom;
-// logo (123 px) next to a column with address, Instagram and legal links 30 px apart.
+// Figma «Footer». Desktop: 205 px margins, 40 px top and bottom; Sanjo logo (196 px), address and Instagram 32 px
+// apart and aligned at the bottom, legal links on the right. Mobile: 28 px margins, 36 px top and bottom;
+// logo (124 px) next to a column with address, Instagram and legal links 32 px apart.
 import Sanjo from '../assets/icons/logo-sanjo.svg';
 import Instagram from '../assets/icons/icon-instagram.svg';
 import { contact, legalNav, links, tel } from '../data/site';
 ---
 
-<footer class="bg-white px-27 py-35 text-base text-olive md:px-64 lg:px-gutter lg:py-40">
-  <div class="flex gap-30 lg:items-end lg:justify-between">
-    <a href={contact.url} target="_blank" rel="noopener" class="block w-123 shrink-0 lg:w-197">
+<footer class="bg-white px-28 py-36 text-base text-olive md:px-64 lg:px-gutter lg:py-40">
+  <div class="flex gap-32 lg:items-end lg:justify-between">
+    <a href={contact.url} target="_blank" rel="noopener" class="block w-124 shrink-0 lg:w-196">
       <span class="sr-only">{contact.company} (Website)</span>
       <Sanjo class="h-auto w-full" aria-hidden="true" />
     </a>
 
-    <div class="flex flex-1 flex-col gap-30 lg:flex-row lg:items-end">
+    <div class="flex flex-1 flex-col gap-32 lg:flex-row lg:items-end">
       <address class="not-italic">
         <strong class="text-h5 font-bold">{contact.company}</strong><br />
         {contact.street}<span class="max-lg:hidden">, </span><br class="lg:hidden" />{contact.postalCode} {contact.city}<br />
@@ -22,7 +22,7 @@ import { contact, legalNav, links, tel } from '../data/site';
         <a href={`mailto:${contact.email}`} class="hover:underline">{contact.email}</a>
       </address>
 
-      <a href={links.instagram || '#'} target={links.instagram ? '_blank' : undefined} rel={links.instagram ? 'noopener' : undefined} class="block size-28 pb-1 transition-opacity hover:opacity-70">
+      <a href={links.instagram || '#'} target={links.instagram ? '_blank' : undefined} rel={links.instagram ? 'noopener' : undefined} class="block size-28 transition-opacity hover:opacity-70">
         <span class="sr-only">Sanjo auf Instagram</span>
         <Instagram class="size-full" aria-hidden="true" />
       </a>

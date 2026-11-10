@@ -20,17 +20,17 @@ const faqLd = {
 
 <Base title="Häufige Fragen" description="Antworten zu Bezugstermin, Bewerbung, Unterlagen, Haustieren, Parkplätzen, Besichtigung, Sauna, Schwimmteich und Schrebergärten von auréa in Reichenburg SZ.">
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} slot="head" />
-  <section data-tone="sand" class="bg-sand px-20 py-50 text-olive md:px-64 lg:py-140">
+  <section data-tone="sand" class="bg-sand px-20 py-48 text-olive md:px-64 lg:py-140">
     <div class:list={['mx-auto max-w-narrow', reveal]} data-reveal>
       <Heading as="h1">häufige fragen.</Heading>
-      <Accordion items={faq} class="mt-30 lg:mt-50" />
+      <Accordion items={faq} class="mt-32 lg:mt-48" />
 
-      <h2 class="mt-60 text-h4 font-bold lg:mt-90">Ihre Frage ist nicht dabei?</h2>
+      <h2 class="mt-60 text-h4 font-bold lg:mt-88">Ihre Frage ist nicht dabei?</h2>
       <p class="mt-20">
         Wir sind gerne für Sie da: {contact.company}, <a href={tel(contact.phone)} class="whitespace-nowrap hover:underline">{contact.phone}</a>,{' '}
         <a href={`mailto:${contact.email}`} class="hover:underline">{contact.email}</a>
       </p>
-      <div class="mt-30 flex justify-end"><Button href={`mailto:${contact.email}`} tone="olive">e-mail schreiben</Button></div>
+      <div class="mt-32 flex justify-end"><Button href={`mailto:${contact.email}`} tone="olive">e-mail schreiben</Button></div>
     </div>
   </section>
 </Base>

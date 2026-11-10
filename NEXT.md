@@ -14,5 +14,3 @@
 - Content: FAQ answers, Baubeschrieb texts and PDF (placeholders in `src/data/content.ts`, `links.constructionPdf`)
 - High-res original of the hero rendering (courtyard; currently 2000 px extracted from the PDF)
 - Deploy: web roots for live and staging in `deploy.sh`, staging subdomain, back up the Laravel landing page first
-- Datenschutz: name the hosting provider
-- Optional: drop `class="blank"` / `mt-[1lh]` in `Prose` and use the normal block gap

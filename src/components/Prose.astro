@@ -1,7 +1,6 @@
 ---
-// Running text inside a section (Figma: text blocks 20 px apart on mobile, 30 px on desktop; a bold lead-in
-// directly above its text, 4 px above the move-in table; class="blank" = a paragraph after an empty line
-// within the same block).
+// Running text inside a section (Figma: text blocks 20 px apart on mobile, 32 px on desktop; a bold lead-in
+// directly above its text, 4 px above the move-in table).
 interface Props {
   class?: string;
 }
@@ -11,7 +10,7 @@ const { class: className } = Astro.props;
 
 <div
   class:list={[
-    '[&>*+*]:mt-20 lg:[&>*+*]:mt-30 [&>h2+p]:mt-0 [&>h3+p]:mt-0 [&>p+dl]:mt-4 [&>.blank]:mt-[1lh]',
+    '[&>*+*]:mt-20 lg:[&>*+*]:mt-32 [&>h2+p]:mt-0 [&>h3+p]:mt-0 [&>p+dl]:mt-4',
     '[&_h2]:text-h5 [&_h2]:font-bold [&_h3]:text-h5 [&_h3]:font-bold',
     className,
   ]}

@@ -1,9 +1,10 @@
 ---
 // Question/answer list as <details>: works without JS, readable by search engines and Ctrl+F.
-// Figma «Accordion»: 18 px top and bottom, title 18 px bold, chevron 20 px 24 px away, answer 10 px below the title.
+// Figma «Accordion» on the 4 px rhythm: 16 px top and bottom, title 18 px bold, chevron 20 px 24 px away,
+// answer 8 px below the title.
 // The panel animates its height (::details-content with interpolate-size, where supported) and clips while it
-// does, so the spacing is plain padding: 10 px under the title, 10 px under the answer, plus 8 px under the row,
-// which makes 18 px at the bottom both closed and open.
+// does, so the spacing is plain padding: 8 px under the title, 8 px under the answer, plus 8 px under the row,
+// which makes 16 px at the bottom both closed and open.
 import Chevron from '../assets/icons/icon-chevron.svg';
 
 interface Props {
@@ -18,11 +19,11 @@ const { items, class: className } = Astro.props;
   {
     items.map(({ question, answer }) => (
       <details class="group border-b border-olive pb-8 details-content:h-0 details-content:overflow-y-clip details-content:transition-[height,content-visibility] details-content:transition-discrete details-content:duration-400 details-content:ease-out open:details-content:h-auto motion-reduce:details-content:transition-none">
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-24 pt-18 pb-10 text-btn font-bold outline-none select-none focus-visible:underline [&::-webkit-details-marker]:hidden">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-24 pt-16 pb-8 text-btn font-bold outline-none select-none focus-visible:underline [&::-webkit-details-marker]:hidden">
           {question}
           <Chevron class="size-20 shrink-0 rotate-180 transition-transform duration-300 group-open:rotate-0" aria-hidden="true" />
         </summary>
-        <p class="pb-10">{answer}</p>
+        <p class="pb-8">{answer}</p>
       </details>
     ))
   }

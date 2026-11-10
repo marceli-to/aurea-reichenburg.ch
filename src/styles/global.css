@@ -36,7 +36,8 @@
   --text-stat: clamp(3.4375rem, 2.971rem + 1.8991vw, 5.25rem); /* 55–84 px: apartment counts */
   --text-stat--line-height: clamp(4.1875rem, 3.8014rem + 1.5717vw, 5.6875rem); /* 67–91 px */
 
-  /* Layout from the Figma desktop frame (1920 px): page edge 205 px, inner edge of a text half 175 px
+  /* Spacing follows a 4 px rhythm (Figma values on its 5/10 grid are rounded to the nearest multiple of 4).
+     Layout from the Figma desktop frame (1920 px): page edge 205 px, inner edge of a text half 175 px
      (both scale with the viewport), centred text column 734 px (highlights, FAQ, Baubeschrieb, legal pages) */
   --spacing-gutter: 10.7vw;
   --spacing-gutter-inner: 9.1vw;
