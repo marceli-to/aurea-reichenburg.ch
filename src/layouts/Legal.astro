@@ -14,8 +14,8 @@ const { title, heading, description } = Astro.props;
 ---
 
 <Base title={title} description={description}>
-  <section class="px-20 py-50 md:px-64 lg:px-[10.677vw] lg:py-140">
-    <div class="max-w-[45.875rem]">
+  <section class="px-20 py-50 md:px-64 lg:px-gutter lg:py-140">
+    <div class="max-w-narrow">
       <Heading as="h1">{heading}</Heading>
       <article
         class="mt-30 lg:mt-50 [&_h2]:mt-40 [&_h2]:mb-8 [&_h2]:font-bold [&_h2]:text-h4 [&_h3]:mt-24 [&_h3]:font-bold [&_p+p]:mt-16 [&_ul]:mt-8 [&_ul]:mb-16 [&_ul]:list-disc [&_ul]:pl-20 [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-olive/40 [&_a:hover]:decoration-olive"

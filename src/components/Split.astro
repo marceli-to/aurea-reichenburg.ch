@@ -29,10 +29,10 @@ const { tone = 'white', media = 'left', id, class: className } = Astro.props;
   <div
     class:list={[
       'flex items-center px-20 py-50 md:px-64 md:py-80 lg:py-45',
-      media === 'left' ? 'lg:col-start-2 lg:pl-[9.1146vw] lg:pr-[10.677vw]' : 'lg:col-start-1 lg:row-start-1 lg:pl-[10.677vw] lg:pr-[9.1146vw]',
+      media === 'left' ? 'lg:col-start-2 lg:pl-gutter-inner lg:pr-gutter' : 'lg:col-start-1 lg:row-start-1 lg:pl-gutter lg:pr-gutter-inner',
     ]}
   >
-    <div class:list={['w-full max-w-[36.25rem]', reveal]} data-reveal>
+    <div class:list={['w-full max-w-580', reveal]} data-reveal>
       <slot />
     </div>
   </div>

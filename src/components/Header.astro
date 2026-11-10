@@ -23,7 +23,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
   ]}
   data-overlay={overlay || undefined}
 >
-  <div class="flex h-full items-center justify-between px-20 md:px-64 lg:px-[10.677vw]">
+  <div class="flex h-full items-center justify-between px-20 md:px-64 lg:px-gutter">
     <a
       href="/"
       class:list={[
@@ -36,7 +36,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     </a>
 
     <nav aria-label="Hauptnavigation" class="max-lg:hidden absolute left-1/2 -translate-x-1/2">
-      <ul class="flex gap-x-[min(5.2vw,6.25rem)]">
+      <ul class="flex gap-x-60 xl:gap-x-100">
         {
           nav.map(({ label, href }) => {
             const active = path === href;
@@ -47,7 +47,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
                   data-nav-link
                   aria-current={active ? 'page' : undefined}
                   class:list={[
-                    'block py-8 text-nav font-bold transition-[color,opacity] duration-150 hover:text-sand',
+                    'block py-8 text-nav font-bold transition duration-150 hover:text-sand',
                     // Transparent home header (Figma Navi-Punkt «Grün»): stays olive, hover at 60 % opacity
                     'lg:group-[[data-overlay]:not(.is-solid)]/header:hover:text-inherit lg:group-[[data-overlay]:not(.is-solid)]/header:hover:opacity-60',
                     active && 'text-sand',
@@ -74,15 +74,13 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
     </button>
   </div>
 
-  {/* Fades in and out. The page keeps its scrollbar while the menu is open: the menu is always 1 px scrollable
-     (inner min height), so overscroll-contain applies and scrolling never reaches the page behind it. */}
+  {/* Fades in and out; the page keeps its scrollbar while the menu is open */}
   <dialog
     id="menu"
     aria-label="Menü"
     tabindex="-1"
-    class="fixed inset-0 m-0 size-full max-h-none max-w-none overflow-y-scroll overscroll-contain bg-olive text-sand opacity-0 outline-none transition-[opacity,overlay,display] transition-discrete duration-300 [scrollbar-width:none] backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 lg:hidden [&::-webkit-scrollbar]:hidden"
+    class="fixed inset-0 m-0 size-full max-h-none max-w-none overflow-y-auto bg-olive text-sand opacity-0 outline-none transition-[opacity,overlay,display] transition-discrete duration-300 backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 lg:hidden"
   >
-    <div class="min-h-[calc(100%+1px)]">
     <div class="flex h-100 items-center justify-between px-20 md:px-64">
       <a href="/" class="block w-95 text-white">
         <span class="sr-only">auréa Reichenburg – zur Startseite</span>
@@ -106,7 +104,6 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
         }
       </ul>
     </nav>
-    </div>
   </dialog>
 </header>
 

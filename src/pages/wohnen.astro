@@ -18,7 +18,7 @@ import { reveal } from '../lib/ui';
   title="Wohnen"
   description="Garten-, Geschoss- und Attikawohnungen mit hochwertigem Ausbau, Komfortlüftung, Free-Cooling und Minergie-Standard – Baubeschrieb von auréa in Reichenburg SZ."
 >
-  <section aria-label="Musterwohnung digital besichtigen" class="relative aspect-[393/560] overflow-hidden bg-olive sm:aspect-[16/9] lg:aspect-[1920/1000]">
+  <section aria-label="Musterwohnung digital besichtigen" class="relative aspect-7/10 overflow-hidden bg-olive sm:aspect-video lg:aspect-hero">
     <TourEmbed />
   </section>
 
@@ -87,7 +87,7 @@ import { reveal } from '../lib/ui';
   </Split>
 
   <section id="baubeschrieb" data-tone="sand" class="bg-sand px-20 py-50 text-olive md:px-64 lg:py-120">
-    <div class:list={['mx-auto max-w-[45.875rem]', reveal]} data-reveal>
+    <div class:list={['mx-auto max-w-narrow', reveal]} data-reveal>
       <Heading>baubeschrieb.</Heading>
       <Accordion items={construction.items} class="mt-30 lg:mt-50" />
       <div class="mt-30 flex flex-col items-start gap-12 lg:mt-50 lg:flex-row lg:items-center lg:justify-between">

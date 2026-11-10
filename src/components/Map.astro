@@ -6,7 +6,7 @@ import { map, project } from '../data/site';
 const config = { token: import.meta.env.PUBLIC_MAPBOX_TOKEN ?? '', center: project.coordinates, ...map };
 ---
 
-<div class="size-full bg-[#e9e7e2]">
+<div class="size-full bg-stone-200">
   <div data-map={JSON.stringify(config)} role="region" aria-label={`Karte: ${map.title}`} class="size-full opacity-0 transition-opacity duration-700"></div>
 </div>
 

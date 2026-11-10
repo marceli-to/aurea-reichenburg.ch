@@ -36,6 +36,13 @@
   --text-stat: clamp(3.4375rem, 2.971rem + 1.8991vw, 5.25rem); /* 55–84 px: apartment counts */
   --text-stat--line-height: clamp(4.1875rem, 3.8014rem + 1.5717vw, 5.6875rem); /* 67–91 px */
 
+  /* Layout from the Figma desktop frame (1920 px): page edge 205 px, inner edge of a text half 175 px
+     (both scale with the viewport), centred text column 734 px (highlights, FAQ, Baubeschrieb, legal pages) */
+  --spacing-gutter: 10.7vw;
+  --spacing-gutter-inner: 9.1vw;
+  --container-narrow: 45.875rem;
+  --aspect-hero: 1920 / 1000;
+
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --default-transition-timing-function: var(--ease-out);
 }
