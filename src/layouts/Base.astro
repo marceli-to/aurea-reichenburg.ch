@@ -104,6 +104,8 @@ const jsonLd = {
     <link rel="preconnect" href="https://p.typekit.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/jbj1dvt.css" />
 
+    {/* Roxy widget (kimiyu); is:inline so Astro leaves the external script as is */}
+    <script is:inline src="https://roxy.kimiyu.ch/widget.js" data-site="lvsrqtkx8ot4hq9zyks6izmw" defer></script>
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <slot name="head" />
   </head>

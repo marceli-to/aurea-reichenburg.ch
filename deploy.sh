@@ -14,7 +14,7 @@ HOST=aurea-reichenbur@aurea-reichenburg.ch
 PORT=2121
 # TODO: web roots on the server (absolute paths), one per domain
 WEBROOT_PRODUCTION=
-WEBROOT_STAGING=
+WEBROOT_STAGING=/staging.aurea-reichenburg.ch/public
 TARGET=staging
 DRY_RUN=()
 for arg in "$@"; do
