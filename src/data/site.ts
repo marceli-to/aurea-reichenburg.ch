@@ -1,6 +1,7 @@
 export const site = {
   name: 'auréa Reichenburg',
-  url: 'https://aurea-reichenburg.ch',
+  /** From `site` in astro.config.mjs (production, or staging when deploy.sh builds for staging), no trailing slash */
+  url: import.meta.env.SITE.replace(/\/$/, ''),
   description:
     'auréa in Reichenburg SZ: 60 Mietwohnungen mit 2.5 bis 5.5 Zimmern in drei Mehrfamilienhäusern im Minergie-Standard, mit Schwimmteich, Sauna, Schrebergärten und Bergblick. Bezug ab 2028.',
 };

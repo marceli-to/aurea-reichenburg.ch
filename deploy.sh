@@ -63,7 +63,8 @@ cp .env "$STAGE/.env"
 ln -s "$PWD/node_modules" "$STAGE/node_modules"
 # GIT_DIR: the copy has no .git; the sitemap reads each page's last commit date from this repository
 REPO_GIT="$PWD/.git"
-(cd "$STAGE" && GIT_DIR="$REPO_GIT" npm run build --silent)
+# SITE_URL: absolute URLs in the build (canonical, OG, sitemap, llms.txt) point to the domain being deployed
+(cd "$STAGE" && GIT_DIR="$REPO_GIT" SITE_URL=$URL npm run build --silent)
 
 # Keep staging out of search engines: a noindex header on every response, and a robots.txt
 # that blocks all crawlers instead of pointing them to the production sitemap
