@@ -57,7 +57,9 @@ const chevron =
   import { A11y, Keyboard } from 'swiper/modules';
   import 'swiper/css';
 
-  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((root) => {
+  // Set up each slider only shortly before it scrolls into view: Swiper measures the layout when it starts,
+  // which would otherwise cost a forced reflow during page load
+  function init(root: HTMLElement) {
     const container = root.querySelector<HTMLElement>('.swiper');
     if (!container) return;
     const swiper = new Swiper(container, {
@@ -70,5 +72,17 @@ const chevron =
     });
     root.querySelector('[data-slider-button="prev"]')?.addEventListener('click', () => swiper.slidePrev());
     root.querySelector('[data-slider-button="next"]')?.addEventListener('click', () => swiper.slideNext());
-  });
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer.unobserve(entry.target);
+        init(entry.target as HTMLElement);
+      }
+    },
+    { rootMargin: '50% 0px' },
+  );
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((root) => observer.observe(root));
 </script>

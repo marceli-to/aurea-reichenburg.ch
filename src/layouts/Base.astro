@@ -99,10 +99,14 @@ const jsonLd = {
     <link rel="sitemap" href="/sitemap.xml" />
     <link rel="alternate" type="text/markdown" href="/llms.txt" title="auréa in Kurzform, für Sprachmodelle" />
 
-    {/* Adelle Sans (Adobe Fonts kit of the landing page; the domain must be allowed in the kit) */}
+    {/* Adelle Sans (Adobe Fonts kit of the landing page; the domain must be allowed in the kit). Loaded without
+        blocking the first paint: until it arrives, text uses the metric-matched fallback (global.css), so the swap
+        does not move anything. */}
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="preconnect" href="https://p.typekit.net" crossorigin />
-    <link rel="stylesheet" href="https://use.typekit.net/jbj1dvt.css" />
+    <link rel="preload" href="https://use.typekit.net/jbj1dvt.css" as="style" />
+    <link rel="stylesheet" href="https://use.typekit.net/jbj1dvt.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://use.typekit.net/jbj1dvt.css" /></noscript>
 
     {/* Roxy widget (kimiyu); is:inline so Astro leaves the external script as is */}
     <script is:inline src="https://roxy.kimiyu.ch/widget.js" data-site="lvsrqtkx8ot4hq9zyks6izmw" defer></script>
