@@ -9,7 +9,8 @@ import { blob, blobShape } from '../lib/ui';
 ---
 
 <div class="absolute inset-0" data-tour={embeds.tour}>
-  <Img image={images.wohnzimmer} sizes="100vw" priority />
+  {/* 16:9 image in the section's 7:10 box below sm: fills its height, so it is shown 10/7 × 16/9 ≈ 254 % of the width */}
+  <Img image={images.wohnzimmer} sizes="(min-width: 40rem) 100vw, 254vw" priority />
   <div class="absolute inset-0 bg-black/30"></div>
   <div class="absolute inset-0 grid place-items-center">
     <a

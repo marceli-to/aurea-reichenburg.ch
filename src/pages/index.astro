@@ -26,7 +26,9 @@ const icons = {
 
 <Base overlayHeader>
   <section data-hero class="relative h-[calc(100svh-100px)] min-h-448 overflow-hidden max-lg:mt-100 lg:h-svh lg:min-h-576">
-    <Img image={images.hero} sizes="100vw" priority />
+    {/* Hero image 16:10 (2000 × 1250), cropped to the window: in a window narrower than 16:10 it fills the height (window
+        below the 100 px header on mobile), so it is shown 1.6 × that height wide */}
+    <Img image={images.hero} sizes="(min-aspect-ratio: 8/5) 100vw, (min-width: 64rem) 160vh, calc((100vh - 6.25rem) * 1.6)" priority />
     {/* Figma: logo 188 px wide 80 px from the top (mobile), 328 px about a sixth down (desktop) */}
     <div class="absolute inset-x-0 top-80 flex justify-center text-white lg:top-1/6">
       <h1 class="w-188 lg:w-328">
