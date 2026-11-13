@@ -21,16 +21,26 @@
 - Staging PageSpeed mobile before these: performance 87–92, accessibility 96 (contrast), SEO 69 (noindex on staging, expected). Server TTFB ~30 ms
 - Decided: CSS stays in separate files (cached across pages), not inlined; image quality stays at 80
 
+## Done (2026-11-13)
+
+- Roxy feedback from the client (Dennis Stoz) on staging:
+  - Sliders blurry: `Img` default `sizes` now allows for object-cover cropping landscape images into the square Split box (e.g. 89vw/178vw for 16:9)
+  - Navigator filter button cut off: section capped at the window below the header (tokens `below-header`, `below-header-lg`)
+  - Tour button text "looks smaller": already 18 px bold like the home button, no change
+- Hero scroll button centred on mobile (was 56 px left of centre)
+- Hero and tour images: `sizes` for their tall mobile crop (sharper on phones, larger downloads)
+- Builds need Node 24 (`nvm use 24`); Node 22.19 is too old for Astro
+
 ## Next
 
 - Content: FAQ answers, Baubeschrieb texts and PDF (placeholders in `src/data/content.ts`, `links.constructionPdf`)
 - High-res original of the hero rendering (courtyard; currently 2000 px extracted from the PDF)
 - Beyonity navigator: 104 MB / CLS from the iframe, ask Beyonity for a lighter variant or load on click
 - Adobe Fonts kit jbj1dvt: set font-display to swap, allow the domain
-- Re-run PageSpeed on staging after deploying fbdb2c7 (median of 2–3 runs)
+- Re-run PageSpeed on staging (median of 2–3 runs); mobile images are larger since 850b51f
 - Production: web root in `deploy.sh` (likely `/aurea-reichenburg.ch/public`, confirm with `pwd`), back up the Laravel landing page first
 - Roxy widget (kimiyu) is in Base.astro since 8a571a6: confirm it should go live
 
 ## Local testing
 
-- Production build: `npm run build && npx astro preview --host 127.0.0.1 --port 4323`, open https://aurea-reichenburg.ch.test (Herd proxy to 4323; needed for the Mapbox token)
+- Production build (Node 24): `npm run build && npx astro preview --host 127.0.0.1 --port 4323`, open https://aurea-reichenburg.ch.test (Herd proxy to 4323; needed for the Mapbox token)
