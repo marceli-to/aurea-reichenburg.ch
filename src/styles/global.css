@@ -43,6 +43,9 @@
   --spacing-gutter-inner: 9.1vw;
   --container-narrow: 45.875rem;
   --aspect-hero: 1920 / 1000;
+  /* The window below the sticky header (100 px, 120 px from lg), e.g. so an embed fits on screen */
+  --spacing-below-header: calc(100svh - 6.25rem);
+  --spacing-below-header-lg: calc(100svh - 7.5rem);
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --default-transition-timing-function: var(--ease-out);

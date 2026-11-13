@@ -5,14 +5,23 @@ import type { Rendering } from '../data/images';
 
 interface Props {
   image: Rendering;
-  /** CSS sizes: how wide the image is shown. Default: half the viewport from lg, full width below */
+  /**
+   * CSS sizes: how wide the image is shown. Default: the square media box of a Split (half the viewport from lg, full
+   * width below). object-cover fills its height, so a landscape image is shown wider than the box: aspect × box width.
+   */
   sizes?: string;
   /** For the image at the top of the page */
   priority?: boolean;
   class?: string;
 }
 
-const { image, sizes = '(min-width: 64rem) 50vw, 100vw', priority = false, class: className } = Astro.props;
+const aspect = Math.max(1, Astro.props.image.src.width / Astro.props.image.src.height);
+const {
+  image,
+  sizes = `(min-width: 64rem) ${Math.ceil(50 * aspect)}vw, ${Math.ceil(100 * aspect)}vw`,
+  priority = false,
+  class: className,
+} = Astro.props;
 const widths = [480, 768, 1024, 1440, 1920, 2560].filter((w) => w <= image.src.width);
 if (!widths.includes(image.src.width) && image.src.width < 2560) widths.push(image.src.width);
 ---
